@@ -29,6 +29,12 @@
   --color-accent-dark: #9c1f24;
   --color-accent-soft: #f8e9e9;
 
+  /* Statuts véhicule uniquement (badges) — exception ciblée à la palette */
+  --color-success: #2f7d52;
+  --color-success-soft: #e8f3ec;
+  --color-warning: #b9791f;
+  --color-warning-soft: #faf1e2;
+
   /* Rayon de bord par défaut pour les cartes/boutons */
   --radius-card: 1rem;
 }
