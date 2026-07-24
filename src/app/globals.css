@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+/*
+ * Palette BD Automobile : sobre, professionnelle, chaleureuse.
+ * Noir/anthracite pour la confiance et le sérieux, blanc et gris clair
+ * pour la clarté, un rouge discret comme unique touche d'accent.
+ */
+:root {
+  --background: #ffffff;
+  --foreground: #14161a;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* Neutres */
+  --color-ink: #14161a;
+  --color-anthracite: #23262b;
+  --color-anthracite-light: #383b41;
+  --color-mist: #f6f7f8;
+  --color-mist-dark: #eceeef;
+  --color-line: #e3e5e8;
+
+  /* Accent rouge discret */
+  --color-accent: #c0272d;
+  --color-accent-dark: #9c1f24;
+  --color-accent-soft: #f8e9e9;
+
+  /* Rayon de bord par défaut pour les cartes/boutons */
+  --radius-card: 1rem;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-accent-soft);
+  color: var(--color-accent-dark);
+}
+
+html {
+  scroll-behavior: smooth;
+}
