@@ -11,11 +11,15 @@ export const NAV_LINKS: NavLink[] = [
   { label: "Contact", href: "/contact" },
 ];
 
+const ADDRESS_QUERY = encodeURIComponent("Chaussée de Louvain 76, 5310 Eghezée, Belgique");
+
 export const CONTACT = {
   phone: "+32 475 25 98 28",
   phoneHref: "tel:+32475259828",
   email: "didier.bdautomobiles@gmail.com",
   address: "Chaussée de Louvain 76, 5310 Eghezée",
+  mapEmbedUrl: `https://www.google.com/maps?q=${ADDRESS_QUERY}&output=embed`,
+  directionsUrl: `https://www.google.com/maps/dir/?api=1&destination=${ADDRESS_QUERY}`,
 };
 
 export const OPENING_HOURS = [
