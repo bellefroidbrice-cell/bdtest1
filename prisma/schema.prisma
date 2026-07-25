@@ -1,8 +1,6 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-// Get a free hosted Postgres database in seconds: `npx create-db`
-
 generator client {
   provider = "prisma-client"
   output   = "../src/generated/prisma"
@@ -10,4 +8,122 @@ generator client {
 
 datasource db {
   provider = "postgresql"
+}
+
+enum FuelType {
+  ESSENCE
+  DIESEL
+  HYBRIDE
+  ELECTRIQUE
+}
+
+enum TransmissionType {
+  MANUELLE
+  AUTOMATIQUE
+}
+
+enum VehicleStatus {
+  AVAILABLE
+  RESERVED
+  SOLD
+}
+
+model Vehicle {
+  id      String  @id @default(cuid())
+  slug    String  @unique
+  brand   String
+  model   String
+  version String?
+
+  year         Int
+  mileageKm    Int
+  fuel         FuelType
+  transmission TransmissionType
+  powerHp      Int?
+  price        Int
+  color        String?
+  doors        Int?
+  seats        Int?
+
+  co2EmissionsGKm   Int?
+  consumptionL100km Float?
+
+  description  String?  @db.Text
+  highlights   String[]
+  thingsToKnow String[]
+  equipment    String[]
+
+  warranty                      String?
+  maintenanceHistory            String?   @db.Text
+  technicalInspectionValidUntil DateTime?
+  previousOwners                Int?
+  interiorCondition             String?
+  exteriorCondition             String?
+  importantNotes                String?   @db.Text
+
+  status     VehicleStatus @default(AVAILABLE)
+  isFeatured Boolean       @default(false)
+  videoUrl   String?
+
+  photos VehiclePhoto[]
+  leads  ContactRequest[]
+
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  soldAt    DateTime?
+
+  @@index([status])
+  @@index([brand, model])
+}
+
+model VehiclePhoto {
+  id       String  @id @default(cuid())
+  url      String
+  position Int     @default(0)
+  alt      String?
+
+  vehicle   Vehicle @relation(fields: [vehicleId], references: [id], onDelete: Cascade)
+  vehicleId String
+
+  @@index([vehicleId])
+}
+
+model Review {
+  id          String   @id @default(cuid())
+  firstName   String
+  rating      Int
+  comment     String   @db.Text
+  isPublished Boolean  @default(true)
+  createdAt   DateTime @default(now())
+}
+
+model FaqItem {
+  id          String  @id @default(cuid())
+  question    String
+  answer      String  @db.Text
+  position    Int     @default(0)
+  isPublished Boolean @default(true)
+}
+
+enum ContactRequestType {
+  INFO
+  APPOINTMENT
+  TRADE_IN_ESTIMATE
+}
+
+model ContactRequest {
+  id      String             @id @default(cuid())
+  type    ContactRequestType @default(INFO)
+  name    String
+  email   String
+  phone   String?
+  message String?            @db.Text
+
+  vehicle   Vehicle? @relation(fields: [vehicleId], references: [id], onDelete: SetNull)
+  vehicleId String?
+
+  createdAt DateTime  @default(now())
+  handledAt DateTime?
+
+  @@index([vehicleId])
 }
