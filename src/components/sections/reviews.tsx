@@ -1,8 +1,9 @@
-import { Star } from "lucide-react";
-
 import { Container } from "@/components/layout/container";
 import { Reveal } from "@/components/motion/reveal";
+import { GoogleRatingStars } from "@/components/reviews/google-rating-stars";
 import { ReviewCard } from "@/components/reviews/review-card";
+import { Button } from "@/components/ui/button";
+import { GOOGLE_RATING } from "@/lib/google-rating";
 import type { ReviewPreview } from "@/types/review";
 
 export function Reviews({ reviews = [] }: { reviews?: ReviewPreview[] }) {
@@ -18,7 +19,26 @@ export function Reviews({ reviews = [] }: { reviews?: ReviewPreview[] }) {
           </h2>
         </Reveal>
 
-        {reviews.length > 0 ? (
+        <Reveal className="flex flex-col items-center gap-3 text-center">
+          <GoogleRatingStars average={GOOGLE_RATING.average} />
+          <p className="text-lg font-semibold text-ink">
+            {GOOGLE_RATING.average.toLocaleString("fr-BE")} / 5
+          </p>
+          <p className="text-sm text-anthracite-light/70">
+            Basé sur {GOOGLE_RATING.count} avis Google
+          </p>
+          <Button
+            href={GOOGLE_RATING.profileUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            variant="outline"
+            className="mt-2"
+          >
+            Voir tous les avis sur Google
+          </Button>
+        </Reveal>
+
+        {reviews.length > 0 && (
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {reviews.map((review, i) => (
               <Reveal key={review.id} index={i}>
@@ -26,17 +46,6 @@ export function Reviews({ reviews = [] }: { reviews?: ReviewPreview[] }) {
               </Reveal>
             ))}
           </div>
-        ) : (
-          <Reveal className="flex flex-col items-center gap-3 rounded-card border border-dashed border-line py-16 text-center">
-            <Star className="h-6 w-6 text-anthracite-light/40" />
-            <p className="text-base font-medium text-ink">
-              Les premiers avis de nos clients arrivent bientôt
-            </p>
-            <p className="max-w-sm text-sm text-anthracite-light/70">
-              Cette section s&apos;affichera dès que nos premiers avis clients
-              seront disponibles.
-            </p>
-          </Reveal>
         )}
       </Container>
     </section>
