@@ -15,7 +15,11 @@ export interface VehiclePreview {
   mileageKm: number;
   fuel: FuelType;
   transmission: Transmission;
+  powerHp?: number;
+  color?: string;
   price: number;
   status: VehicleStatus;
   isNew?: boolean;
+  /** Date d'ajout à l'inventaire (ISO), utilisée pour le tri "plus récent". */
+  createdAt: string;
 }
