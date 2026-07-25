@@ -1,8 +1,8 @@
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import Link from "next/link";
 import type { SVGProps } from "react";
 
-import { CONTACT, NAV_LINKS } from "@/lib/nav";
+import { CONTACT, NAV_LINKS, OPENING_HOURS } from "@/lib/nav";
 
 import { Container } from "./container";
 
@@ -37,7 +37,7 @@ const SOCIAL_LINKS = [
 export function Footer() {
   return (
     <footer className="bg-ink text-white">
-      <Container className="grid grid-cols-1 gap-12 py-16 sm:grid-cols-2 lg:grid-cols-4">
+      <Container className="grid grid-cols-1 gap-12 py-16 sm:grid-cols-2 lg:grid-cols-5">
         <div className="flex flex-col gap-4">
           <span className="text-lg font-bold tracking-tight">
             BD <span className="text-accent">Automobile</span>
@@ -99,6 +99,22 @@ export function Footer() {
             <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
             {CONTACT.address}
           </span>
+        </div>
+
+        <div className="flex flex-col gap-3">
+          <h3 className="text-sm font-semibold uppercase tracking-wide text-white/50">
+            Horaires
+          </h3>
+          {OPENING_HOURS.map((slot) => (
+            <div key={slot.label} className="flex items-start gap-2 text-sm text-white/70">
+              <Clock className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+              <span>
+                {slot.label}
+                <br />
+                <span className="text-white/50">{slot.hours}</span>
+              </span>
+            </div>
+          ))}
         </div>
 
         <div className="flex flex-col gap-3">

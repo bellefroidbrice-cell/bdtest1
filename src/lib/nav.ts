@@ -11,10 +11,15 @@ export const NAV_LINKS: NavLink[] = [
   { label: "Contact", href: "/contact" },
 ];
 
-// Numéro et adresse provisoires, à remplacer par les coordonnées réelles du garage.
 export const CONTACT = {
-  phone: "+32 81 00 00 00",
-  phoneHref: "tel:+3281000000",
-  email: "info@bdautomobile.be",
-  address: "Chaussée de Namur, 5310 Eghezée",
+  phone: "+32 475 25 98 28",
+  phoneHref: "tel:+32475259828",
+  email: "didier.bdautomobiles@gmail.com",
+  address: "Chaussée de Louvain 76, 5310 Eghezée",
 };
+
+export const OPENING_HOURS = [
+  { label: "Lundi - Vendredi", hours: "9h30 - 18h00" },
+  { label: "Samedi", hours: "9h30 - 13h00" },
+  { label: "Dimanche", hours: "Fermé" },
+];
