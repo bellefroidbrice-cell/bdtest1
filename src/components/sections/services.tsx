@@ -1,48 +1,7 @@
-import { ArrowLeftRight, Car, FileText, MessageCircle, Search } from "lucide-react";
-import type { ComponentType } from "react";
-
 import { Container } from "@/components/layout/container";
 import { Reveal } from "@/components/motion/reveal";
 import { Card } from "@/components/ui/card";
-
-interface Service {
-  Icon: ComponentType<{ className?: string }>;
-  title: string;
-  description: string;
-}
-
-const SERVICES: Service[] = [
-  {
-    Icon: Car,
-    title: "Vente de véhicules",
-    description:
-      "Un large choix de véhicules d'occasion et récents, de marques généralistes.",
-  },
-  {
-    Icon: ArrowLeftRight,
-    title: "Reprise de véhicule",
-    description:
-      "Nous reprenons votre ancien véhicule lors de l'achat d'une nouvelle voiture.",
-  },
-  {
-    Icon: Search,
-    title: "Recherche personnalisée",
-    description:
-      "Vous cherchez un modèle précis ? Nous le trouvons pour vous selon vos critères.",
-  },
-  {
-    Icon: MessageCircle,
-    title: "Conseils & accompagnement",
-    description:
-      "Des conseils honnêtes pour vous aider à choisir le véhicule qui vous correspond.",
-  },
-  {
-    Icon: FileText,
-    title: "Accompagnement administratif",
-    description:
-      "Immatriculation et formalités : nous simplifions les démarches liées à votre achat.",
-  },
-];
+import { SERVICES } from "@/lib/services-data";
 
 export function Services() {
   return (
