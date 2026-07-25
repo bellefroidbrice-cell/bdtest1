@@ -5,7 +5,7 @@ import { CheckCircle2, Loader2, XCircle } from "lucide-react";
 import { useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 
-import { submitContactRequest } from "@/app/contact/actions";
+import { submitContactRequest } from "@/app/(site)/contact/actions";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { CONTACT_REQUEST_TYPES, contactFormSchema, type ContactFormValues } from "@/lib/validations/contact";
