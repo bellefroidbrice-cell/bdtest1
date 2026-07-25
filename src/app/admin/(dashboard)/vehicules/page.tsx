@@ -6,6 +6,10 @@ import type { Vehicle } from "@/generated/prisma/client";
 
 import { VehicleRow } from "./vehicle-row";
 
+// Page d'administration authentifiée avec des données changeantes :
+// jamais de pré-rendu statique au build, toujours généré à la demande.
+export const dynamic = "force-dynamic";
+
 export default async function AdminVehiclesPage() {
   let vehicles: Vehicle[] = [];
   let dbError = false;
