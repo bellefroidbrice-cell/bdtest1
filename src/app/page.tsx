@@ -1,11 +1,15 @@
+import { ShieldCheck } from "lucide-react";
+
+import { Container } from "@/components/layout/container";
+import { DotGrid } from "@/components/decor/dot-grid";
+import { Glow } from "@/components/decor/glow";
+import { ParallaxLayer } from "@/components/decor/parallax-layer";
+import { TechLines } from "@/components/decor/tech-lines";
+import { Reveal } from "@/components/motion/reveal";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Container } from "@/components/layout/container";
-import { DotGrid } from "@/components/decor/dot-grid";
-import { Glow } from "@/components/decor/glow";
-import { Reveal } from "@/components/motion/reveal";
 
 const STATS = [
   { value: 12, suffix: " ans", label: "d'expérience" },
@@ -15,23 +19,28 @@ const STATS = [
 
 export default function Home() {
   return (
-    <main className="flex flex-1 flex-col gap-24 py-24">
-      <section className="relative overflow-hidden">
-        <Glow />
-        <DotGrid />
-        <Container className="flex flex-col items-center gap-4 text-center">
+    <main className="flex flex-1 flex-col gap-24 pt-24">
+      <section className="relative overflow-hidden bg-ink py-16">
+        <ParallaxLayer>
+          <Glow tone="dark" />
+          <DotGrid tone="dark" />
+        </ParallaxLayer>
+        <TechLines className="absolute inset-0 h-full w-full text-accent/70" />
+
+        <Container className="relative flex flex-col items-center gap-4 text-center">
           <Reveal>
-            <span className="text-sm font-medium uppercase tracking-widest text-accent">
-              BD Automobile
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-medium text-white/80 backdrop-blur-md">
+              <ShieldCheck className="h-3.5 w-3.5 text-accent" />
+              Garage indépendant de confiance
             </span>
           </Reveal>
           <Reveal delay={0.08}>
-            <h1 className="max-w-2xl text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+            <h1 className="max-w-2xl text-3xl font-semibold tracking-tight text-white sm:text-4xl">
               Le design system est en place.
             </h1>
           </Reveal>
           <Reveal delay={0.16}>
-            <p className="max-w-md text-base text-anthracite-light/80">
+            <p className="max-w-md text-base text-white/60">
               Prochaine étape : la vraie page d&apos;accueil, dès votre
               validation.
             </p>
@@ -81,7 +90,9 @@ export default function Home() {
         ))}
       </Container>
 
-      <section className="relative overflow-hidden bg-mist py-16">
+      <section className="relative overflow-hidden bg-anthracite py-16">
+        <Glow tone="dark" className="opacity-60" />
+        <DotGrid tone="dark" />
         <Container className="grid grid-cols-1 gap-8 text-center sm:grid-cols-3">
           {STATS.map((stat, i) => (
             <Reveal key={stat.label} index={i}>
@@ -89,11 +100,9 @@ export default function Home() {
                 <AnimatedCounter
                   value={stat.value}
                   suffix={stat.suffix}
-                  className="text-4xl font-semibold tracking-tight text-ink"
+                  className="font-mono text-4xl font-semibold tracking-tight text-white"
                 />
-                <span className="text-sm text-anthracite-light/80">
-                  {stat.label}
-                </span>
+                <span className="text-sm text-white/60">{stat.label}</span>
               </div>
             </Reveal>
           ))}

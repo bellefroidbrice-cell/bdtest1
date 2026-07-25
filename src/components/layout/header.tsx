@@ -32,14 +32,14 @@ export function Header() {
   return (
     <header
       className={cn(
-        "sticky top-0 z-50 border-b bg-white/90 backdrop-blur transition-shadow duration-300",
-        scrolled ? "border-line shadow-sm" : "border-transparent",
+        "sticky top-0 z-50 border-b bg-ink/90 backdrop-blur transition-shadow duration-300",
+        scrolled ? "border-white/10 shadow-lg shadow-black/20" : "border-transparent",
       )}
     >
       <Container className="flex h-20 items-center justify-between">
         <Link
           href="/"
-          className="text-lg font-bold tracking-tight text-ink"
+          className="text-lg font-bold tracking-tight text-white"
           onClick={() => setOpen(false)}
         >
           BD <span className="text-accent">Automobile</span>
@@ -50,7 +50,7 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="group relative text-sm font-medium text-anthracite-light"
+              className="group relative text-sm font-medium text-white/70 transition-colors duration-200 hover:text-white"
             >
               {link.label}
               <span className="absolute -bottom-1 left-0 h-px w-0 bg-accent transition-all duration-300 ease-out group-hover:w-full" />
@@ -64,6 +64,7 @@ export function Header() {
             variant="ghost"
             size="icon"
             aria-label="Appeler BD Automobile"
+            className="text-white/80 hover:bg-white/10 hover:text-white"
           >
             <Phone className="h-4 w-4" />
           </Button>
@@ -74,7 +75,7 @@ export function Header() {
 
         <button
           type="button"
-          className="flex h-11 w-11 items-center justify-center rounded-full text-ink lg:hidden"
+          className="flex h-11 w-11 items-center justify-center rounded-full text-white lg:hidden"
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
           aria-expanded={open}
@@ -90,7 +91,7 @@ export function Header() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="overflow-hidden border-t border-line bg-white lg:hidden"
+            className="overflow-hidden border-t border-white/10 bg-ink lg:hidden"
           >
             <Container className="flex flex-col gap-1 py-4">
               {NAV_LINKS.map((link, i) => (
@@ -103,14 +104,18 @@ export function Header() {
                   <Link
                     href={link.href}
                     onClick={() => setOpen(false)}
-                    className="block rounded-lg px-3 py-3 text-base font-medium text-ink hover:bg-mist"
+                    className="block rounded-lg px-3 py-3 text-base font-medium text-white hover:bg-white/5"
                   >
                     {link.label}
                   </Link>
                 </motion.div>
               ))}
-              <div className="mt-3 flex flex-col gap-3 border-t border-line pt-4">
-                <Button href={CONTACT.phoneHref} variant="outline">
+              <div className="mt-3 flex flex-col gap-3 border-t border-white/10 pt-4">
+                <Button
+                  href={CONTACT.phoneHref}
+                  variant="outline"
+                  className="border-white/15 text-white hover:border-white/30 hover:bg-white/5"
+                >
                   <Phone className="h-4 w-4" /> Appeler
                 </Button>
                 <Button href="/contact" variant="primary" onClick={() => setOpen(false)}>
