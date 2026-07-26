@@ -13,7 +13,13 @@ export const metadata: Metadata = {
     "Contactez BD Automobile à Eghezée : formulaire de contact, adresse, téléphone, horaires et itinéraire.",
 };
 
-export default function ContactPage() {
+export default async function ContactPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ vehicule?: string; titre?: string }>;
+}) {
+  const { vehicule, titre } = await searchParams;
+
   return (
     <main className="flex flex-1 flex-col py-16">
       <Container className="flex flex-col gap-10">
@@ -32,7 +38,7 @@ export default function ContactPage() {
 
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-5">
           <Card className="p-6 sm:p-8 lg:col-span-3">
-            <ContactForm />
+            <ContactForm vehicleId={vehicule} vehicleLabel={titre} />
           </Card>
 
           <div className="flex flex-col gap-6 lg:col-span-2">

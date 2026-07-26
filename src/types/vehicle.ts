@@ -8,6 +8,7 @@ export type VehicleStatus = "available" | "reserved" | "sold";
  */
 export interface VehiclePreview {
   id: string;
+  slug: string;
   brand: string;
   model: string;
   version?: string;
@@ -24,4 +25,21 @@ export interface VehiclePreview {
   createdAt: string;
   /** URL de la première photo, si au moins une a été ajoutée. */
   photoUrl?: string;
+}
+
+/**
+ * Fiche véhicule complète, utilisée par la page de détail /vehicules/[slug].
+ */
+export interface VehicleDetail extends VehiclePreview {
+  doors?: number;
+  seats?: number;
+  co2EmissionsGKm?: number;
+  consumptionL100km?: number;
+  description?: string;
+  warranty?: string;
+  previousOwners?: number;
+  interiorCondition?: string;
+  exteriorCondition?: string;
+  importantNotes?: string;
+  photos: string[];
 }

@@ -15,6 +15,7 @@ export const contactFormSchema = z.object({
     .string()
     .trim()
     .min(10, "Votre message doit contenir au moins 10 caractères."),
+  vehicleId: z.string().trim().optional().or(z.literal("")),
 });
 
 export type ContactFormValues = z.infer<typeof contactFormSchema>;

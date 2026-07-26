@@ -13,7 +13,12 @@ import { CONTACT_REQUEST_TYPES, contactFormSchema, type ContactFormValues } from
 const inputClasses =
   "w-full rounded-xl border border-line bg-white px-4 py-2.5 text-sm text-ink placeholder:text-anthracite-light/50 focus:border-ink focus:outline-none";
 
-export function ContactForm() {
+interface ContactFormProps {
+  vehicleId?: string;
+  vehicleLabel?: string;
+}
+
+export function ContactForm({ vehicleId, vehicleLabel }: ContactFormProps) {
   const [isPending, startTransition] = useTransition();
   const [status, setStatus] = useState<{ type: "success" | "error"; message: string } | null>(
     null,
@@ -26,7 +31,14 @@ export function ContactForm() {
     formState: { errors },
   } = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
-    defaultValues: { type: "INFO", phone: "" },
+    defaultValues: {
+      type: vehicleId ? "APPOINTMENT" : "INFO",
+      phone: "",
+      vehicleId: vehicleId ?? "",
+      message: vehicleLabel
+        ? `Bonjour, je suis intéressé(e) par le véhicule ${vehicleLabel}. Pourriez-vous me donner plus d'informations ?`
+        : "",
+    },
   });
 
   const onSubmit = (values: ContactFormValues) => {
@@ -47,6 +59,14 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5">
+      <input type="hidden" {...register("vehicleId")} />
+
+      {vehicleLabel && (
+        <div className="rounded-xl border border-accent/30 bg-accent-soft px-4 py-3 text-sm text-accent-dark">
+          Au sujet du véhicule : <strong>{vehicleLabel}</strong>
+        </div>
+      )}
+
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         <div className="flex flex-col gap-1.5">
           <label htmlFor="name" className="text-sm font-medium text-ink">

@@ -2,6 +2,7 @@ import type { Vehicle, VehiclePhoto } from "@/generated/prisma/client";
 import type {
   FuelType,
   Transmission,
+  VehicleDetail,
   VehiclePreview,
   VehicleStatus,
 } from "@/types/vehicle";
@@ -37,6 +38,7 @@ export function toVehiclePreview(
 ): VehiclePreview {
   return {
     id: vehicle.id,
+    slug: vehicle.slug,
     brand: vehicle.brand,
     model: vehicle.model,
     version: vehicle.version ?? undefined,
@@ -51,5 +53,24 @@ export function toVehiclePreview(
     isNew: isRecentlyAdded(vehicle.createdAt),
     createdAt: vehicle.createdAt.toISOString(),
     photoUrl: vehicle.photos?.[0]?.url,
+  };
+}
+
+export function toVehicleDetail(
+  vehicle: Vehicle & { photos: Pick<VehiclePhoto, "url">[] },
+): VehicleDetail {
+  return {
+    ...toVehiclePreview(vehicle),
+    doors: vehicle.doors ?? undefined,
+    seats: vehicle.seats ?? undefined,
+    co2EmissionsGKm: vehicle.co2EmissionsGKm ?? undefined,
+    consumptionL100km: vehicle.consumptionL100km ?? undefined,
+    description: vehicle.description ?? undefined,
+    warranty: vehicle.warranty ?? undefined,
+    previousOwners: vehicle.previousOwners ?? undefined,
+    interiorCondition: vehicle.interiorCondition ?? undefined,
+    exteriorCondition: vehicle.exteriorCondition ?? undefined,
+    importantNotes: vehicle.importantNotes ?? undefined,
+    photos: vehicle.photos.map((p) => p.url),
   };
 }

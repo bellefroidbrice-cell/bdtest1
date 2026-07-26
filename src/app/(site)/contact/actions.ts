@@ -22,6 +22,7 @@ export async function submitContactRequest(
         email: parsed.data.email,
         phone: parsed.data.phone || undefined,
         message: parsed.data.message,
+        vehicleId: parsed.data.vehicleId || undefined,
       },
     });
     return { success: true };
