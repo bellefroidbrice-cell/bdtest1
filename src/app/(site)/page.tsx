@@ -5,14 +5,35 @@ import { Reviews } from "@/components/sections/reviews";
 import { Services } from "@/components/sections/services";
 import { VehiclesPreview } from "@/components/sections/vehicles-preview";
 import { WhyUs } from "@/components/sections/why-us";
+import { prisma } from "@/lib/prisma";
+import { toVehiclePreview } from "@/lib/vehicle-mapper";
+import type { VehiclePreview } from "@/types/vehicle";
 
-export default function Home() {
+export const revalidate = 60;
+
+async function getPreviewVehicles(): Promise<VehiclePreview[]> {
+  try {
+    const vehicles = await prisma.vehicle.findMany({
+      where: { status: { not: "SOLD" } },
+      orderBy: [{ isFeatured: "desc" }, { createdAt: "desc" }],
+      take: 3,
+    });
+    return vehicles.map(toVehiclePreview);
+  } catch (error) {
+    console.error("Failed to load preview vehicles", error);
+    return [];
+  }
+}
+
+export default async function Home() {
+  const vehicles = await getPreviewVehicles();
+
   return (
     <main className="flex flex-1 flex-col">
       <Hero />
       <WhyUs />
       <Services />
-      <VehiclesPreview />
+      <VehiclesPreview vehicles={vehicles} />
       <Reviews />
       <Faq />
       <Cta />
