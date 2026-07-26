@@ -1,4 +1,4 @@
-import { Car, ExternalLink, LogOut } from "lucide-react";
+import { Car, ExternalLink, LogOut, Mail } from "lucide-react";
 import Link from "next/link";
 
 import { logout } from "@/app/admin/login/actions";
@@ -23,6 +23,13 @@ export default function AdminDashboardLayout({
             >
               <Car className="h-4 w-4" />
               Véhicules
+            </Link>
+            <Link
+              href="/admin/contacts"
+              className="flex items-center gap-2.5 rounded-lg px-3 py-2.5 text-sm font-medium text-ink hover:bg-mist"
+            >
+              <Mail className="h-4 w-4" />
+              Contacts
             </Link>
           </nav>
         </div>
