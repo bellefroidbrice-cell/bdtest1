@@ -1,4 +1,5 @@
 import { Calendar, Car, Cog, Fuel, Gauge } from "lucide-react";
+import Image from "next/image";
 
 import { Badge, vehicleStatusLabels } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
@@ -20,9 +21,19 @@ export function VehiclePreviewCard({ vehicle }: { vehicle: VehiclePreview }) {
       <span className="absolute inset-x-0 top-0 z-10 h-0.5 origin-left scale-x-0 bg-accent transition-transform duration-300 ease-out group-hover:scale-x-100" />
 
       <div className="relative h-48 overflow-hidden bg-mist">
-        <div className="flex h-full w-full scale-100 items-center justify-center transition-transform duration-500 ease-out group-hover:scale-105">
-          <Car className="h-12 w-12 text-anthracite-light/30" />
-        </div>
+        {vehicle.photoUrl ? (
+          <Image
+            src={vehicle.photoUrl}
+            alt={`${vehicle.brand} ${vehicle.model}`}
+            fill
+            sizes="(min-width: 1024px) 360px, (min-width: 640px) 50vw, 100vw"
+            className="scale-100 object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+          />
+        ) : (
+          <div className="flex h-full w-full scale-100 items-center justify-center transition-transform duration-500 ease-out group-hover:scale-105">
+            <Car className="h-12 w-12 text-anthracite-light/30" />
+          </div>
+        )}
         <div className="absolute left-3 top-3 flex gap-2">
           {vehicle.isNew && <Badge variant="new">Nouveau</Badge>}
           <Badge variant={STATUS_BADGE_VARIANT[vehicle.status]}>

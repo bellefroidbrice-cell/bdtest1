@@ -14,7 +14,10 @@ export default async function EditVehiclePage({
 
   let vehicle;
   try {
-    vehicle = await prisma.vehicle.findUnique({ where: { id } });
+    vehicle = await prisma.vehicle.findUnique({
+      where: { id },
+      include: { photos: { orderBy: { position: "asc" } } },
+    });
   } catch (error) {
     console.error("Failed to load vehicle", error);
     return (
@@ -36,7 +39,13 @@ export default async function EditVehiclePage({
       <h1 className="text-2xl font-semibold text-ink">
         Modifier {vehicle.brand} {vehicle.model}
       </h1>
-      <VehicleForm action={boundUpdate} defaultValues={vehicle} submitLabel="Enregistrer" />
+      <VehicleForm
+        action={boundUpdate}
+        defaultValues={vehicle}
+        submitLabel="Enregistrer"
+        vehicleId={vehicle.id}
+        existingPhotos={vehicle.photos}
+      />
     </div>
   );
 }

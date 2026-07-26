@@ -1,4 +1,4 @@
-import type { Vehicle } from "@/generated/prisma/client";
+import type { Vehicle, VehiclePhoto } from "@/generated/prisma/client";
 import type {
   FuelType,
   Transmission,
@@ -32,7 +32,9 @@ function isRecentlyAdded(createdAt: Date) {
   return daysSinceAdded <= NEW_THRESHOLD_DAYS;
 }
 
-export function toVehiclePreview(vehicle: Vehicle): VehiclePreview {
+export function toVehiclePreview(
+  vehicle: Vehicle & { photos?: Pick<VehiclePhoto, "url">[] },
+): VehiclePreview {
   return {
     id: vehicle.id,
     brand: vehicle.brand,
@@ -48,5 +50,6 @@ export function toVehiclePreview(vehicle: Vehicle): VehiclePreview {
     status: STATUS_MAP[vehicle.status] ?? "available",
     isNew: isRecentlyAdded(vehicle.createdAt),
     createdAt: vehicle.createdAt.toISOString(),
+    photoUrl: vehicle.photos?.[0]?.url,
   };
 }

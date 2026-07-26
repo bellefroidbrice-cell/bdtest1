@@ -10,6 +10,7 @@ import {
 } from "@/lib/validations/vehicle";
 
 import type { VehicleFormState } from "./actions";
+import { ExistingPhotos } from "./existing-photos";
 
 const inputClasses =
   "w-full rounded-xl border border-line bg-white px-4 py-2.5 text-sm text-ink placeholder:text-anthracite-light/50 focus:border-ink focus:outline-none";
@@ -43,6 +44,8 @@ interface VehicleFormProps {
   action: (state: VehicleFormState, formData: FormData) => Promise<VehicleFormState>;
   defaultValues?: VehicleFormDefaults;
   submitLabel: string;
+  vehicleId?: string;
+  existingPhotos?: { id: string; url: string }[];
 }
 
 function Field({
@@ -60,7 +63,13 @@ function Field({
   );
 }
 
-export function VehicleForm({ action, defaultValues, submitLabel }: VehicleFormProps) {
+export function VehicleForm({
+  action,
+  defaultValues,
+  submitLabel,
+  vehicleId,
+  existingPhotos = [],
+}: VehicleFormProps) {
   const [state, formAction, isPending] = useActionState(action, undefined);
   const d = defaultValues ?? {};
 
@@ -249,6 +258,22 @@ export function VehicleForm({ action, defaultValues, submitLabel }: VehicleFormP
             rows={3}
             defaultValue={d.importantNotes ?? ""}
             className={inputClasses}
+          />
+        </Field>
+      </fieldset>
+
+      <fieldset className="flex flex-col gap-5">
+        <legend className="text-base font-semibold text-ink">Photos</legend>
+        {vehicleId && (
+          <ExistingPhotos photos={existingPhotos} vehicleId={vehicleId} />
+        )}
+        <Field label={vehicleId ? "Ajouter des photos (optionnel)" : "Photos (optionnel)"}>
+          <input
+            type="file"
+            name="photos"
+            multiple
+            accept="image/*"
+            className="w-full rounded-xl border border-dashed border-line bg-white px-4 py-3 text-sm text-anthracite-light/70 file:mr-4 file:rounded-full file:border-0 file:bg-ink file:px-4 file:py-2 file:text-xs file:font-medium file:text-white"
           />
         </Field>
       </fieldset>

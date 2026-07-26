@@ -19,6 +19,7 @@ async function getVehicles(): Promise<VehiclePreview[]> {
     const vehicles = await prisma.vehicle.findMany({
       where: { status: { not: "SOLD" } },
       orderBy: { createdAt: "desc" },
+      include: { photos: { orderBy: { position: "asc" }, take: 1 } },
     });
     return vehicles.map(toVehiclePreview);
   } catch (error) {

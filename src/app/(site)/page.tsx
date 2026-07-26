@@ -17,6 +17,7 @@ async function getPreviewVehicles(): Promise<VehiclePreview[]> {
       where: { status: { not: "SOLD" } },
       orderBy: [{ isFeatured: "desc" }, { createdAt: "desc" }],
       take: 3,
+      include: { photos: { orderBy: { position: "asc" }, take: 1 } },
     });
     return vehicles.map(toVehiclePreview);
   } catch (error) {

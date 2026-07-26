@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
+import { deleteCloudinaryAsset, uploadVehiclePhoto } from "@/lib/cloudinary";
 import { prisma } from "@/lib/prisma";
 import { slugify } from "@/lib/slug";
 import { vehicleFormSchema } from "@/lib/validations/vehicle";
@@ -17,6 +18,25 @@ function parseVehicleForm(formData: FormData) {
   });
 }
 
+function getNewPhotoFiles(formData: FormData): File[] {
+  return formData
+    .getAll("photos")
+    .filter((entry): entry is File => entry instanceof File && entry.size > 0);
+}
+
+async function attachPhotos(vehicleId: string, files: File[], startPosition: number) {
+  for (const [index, file] of files.entries()) {
+    try {
+      const url = await uploadVehiclePhoto(file);
+      await prisma.vehiclePhoto.create({
+        data: { vehicleId, url, position: startPosition + index },
+      });
+    } catch (error) {
+      console.error("uploadVehiclePhoto failed", error);
+    }
+  }
+}
+
 export async function createVehicle(
   _prevState: VehicleFormState,
   formData: FormData,
@@ -26,9 +46,10 @@ export async function createVehicle(
     return { success: false, error: "Merci de vérifier les champs du formulaire." };
   }
 
+  let vehicleId: string;
   try {
     const { brand, model, year, ...rest } = parsed.data;
-    await prisma.vehicle.create({
+    const vehicle = await prisma.vehicle.create({
       data: {
         brand,
         model,
@@ -37,6 +58,7 @@ export async function createVehicle(
         ...rest,
       },
     });
+    vehicleId = vehicle.id;
   } catch (error) {
     console.error("createVehicle failed", error);
     return {
@@ -44,6 +66,8 @@ export async function createVehicle(
       error: "Impossible d'enregistrer le véhicule (base de données non connectée ?).",
     };
   }
+
+  await attachPhotos(vehicleId, getNewPhotoFiles(formData), 0);
 
   revalidatePath("/admin/vehicules");
   redirect("/admin/vehicules");
@@ -72,13 +96,36 @@ export async function updateVehicle(
     };
   }
 
+  const existingPhotoCount = await prisma.vehiclePhoto.count({
+    where: { vehicleId: id },
+  });
+  await attachPhotos(id, getNewPhotoFiles(formData), existingPhotoCount);
+
   revalidatePath("/admin/vehicules");
-  redirect("/admin/vehicules");
+  redirect(`/admin/vehicules/${id}`);
 }
 
 export async function deleteVehicle(id: string) {
+  const vehicle = await prisma.vehicle.findUnique({
+    where: { id },
+    include: { photos: true },
+  });
+
+  await Promise.all(
+    (vehicle?.photos ?? []).map((photo) => deleteCloudinaryAsset(photo.url)),
+  );
+
   await prisma.vehicle.delete({ where: { id } });
   revalidatePath("/admin/vehicules");
+}
+
+export async function deleteVehiclePhoto(photoId: string, vehicleId: string) {
+  const photo = await prisma.vehiclePhoto.findUnique({ where: { id: photoId } });
+  if (photo) {
+    await deleteCloudinaryAsset(photo.url);
+    await prisma.vehiclePhoto.delete({ where: { id: photoId } });
+  }
+  revalidatePath(`/admin/vehicules/${vehicleId}`);
 }
 
 export async function updateVehicleStatus(

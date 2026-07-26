@@ -3,8 +3,8 @@ export type Transmission = "Manuelle" | "Automatique";
 export type VehicleStatus = "available" | "reserved" | "sold";
 
 /**
- * Forme des données véhicule, calquée sur le futur modèle Prisma.
- * Utilisée pour les données d'exemple en attendant le vrai inventaire.
+ * Forme des données véhicule utilisée par les composants d'affichage,
+ * dérivée du modèle Prisma via src/lib/vehicle-mapper.ts.
  */
 export interface VehiclePreview {
   id: string;
@@ -22,4 +22,6 @@ export interface VehiclePreview {
   isNew?: boolean;
   /** Date d'ajout à l'inventaire (ISO), utilisée pour le tri "plus récent". */
   createdAt: string;
+  /** URL de la première photo, si au moins une a été ajoutée. */
+  photoUrl?: string;
 }
