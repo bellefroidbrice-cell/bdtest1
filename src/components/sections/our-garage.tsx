@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { CONTACT, OPENING_HOURS } from "@/lib/nav";
 
 const GARAGE_PHOTO_URL =
-  "https://res.cloudinary.com/q3h3kvk6/image/upload/q_auto,f_auto/v1785098039/IMG_7734_lxmwqu.webp";
+  "https://res.cloudinary.com/q3h3kvk6/image/upload/q_auto,f_auto/v1785098762/IMG_7737_kmdrzd.jpg";
 
 export function OurGarage() {
   return (
