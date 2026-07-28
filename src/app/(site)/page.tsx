@@ -1,7 +1,6 @@
 import { Cta } from "@/components/sections/cta";
 import { Faq } from "@/components/sections/faq";
 import { Hero } from "@/components/sections/hero";
-import { OurGarage } from "@/components/sections/our-garage";
 import { Reviews } from "@/components/sections/reviews";
 import { Services } from "@/components/sections/services";
 import { VehiclesPreview } from "@/components/sections/vehicles-preview";
@@ -34,7 +33,6 @@ export default async function Home() {
     <main className="flex flex-1 flex-col">
       <Hero />
       <WhyUs />
-      <OurGarage />
       <Services />
       <VehiclesPreview vehicles={vehicles} />
       <Reviews />
