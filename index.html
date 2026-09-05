@@ -46,8 +46,6 @@ h1, h2 {
   letter-spacing: -0.03em;
   line-height: 0.9;
   margin: 0;
-  max-width: 100%;
-  overflow-wrap: break-word;
 }
 
 h1 { font-size: clamp(3rem, 12vw, 11rem); }
@@ -217,7 +215,6 @@ body::after {
 .block .inner {
   width: 100%;
   max-width: 560px;
-  overflow-wrap: break-word;
 }
 
 .wc { will-change: transform, opacity, filter; }
@@ -258,6 +255,7 @@ body::after {
 }
 
 .lead {
+  overflow-wrap: break-word;
   margin-top: 22px;
   font-size: clamp(0.95rem, 1.4vw, 1.1rem);
   line-height: 1.62;
@@ -352,6 +350,7 @@ body::after {
   text-align: left;
 }
 .carbon-list li {
+  overflow-wrap: break-word;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -439,6 +438,7 @@ body::after {
   padding: 64px clamp(24px, 6vw, 96px);
   border-top: 1px solid rgba(255, 255, 255, 0.22);
   text-align: left;
+  overflow: hidden;
 }
 .static .block .inner { max-width: 720px; margin: 0; }
 .static .b-engine .inner { max-width: 720px; }
@@ -499,6 +499,7 @@ body::after {
     padding: 64px clamp(24px, 6vw, 96px);
     border-top: 1px solid rgba(255, 255, 255, 0.22);
     text-align: left;
+    overflow: hidden;
   }
   .block .inner, .b-engine .inner { max-width: 720px; margin: 0; }
   .counter { justify-content: flex-start; }
