@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Ducati Superleggera V4 — 152,2 kg. 224 cv. 500 exemplaires.</title>
-<meta name="description" content="La Ducati Superleggera V4 : 998 cm3 Desmosedici Stradale R, 224 cv, 152,2 kg a sec, chassis integralement en fibre de carbone et ailerons biplan. 500 exemplaires numerotes dans le monde.">
+<title>Lamborghini Huracán STO — 640 cv. 1 339 kg. V10 atmosphérique.</title>
+<meta name="description" content="La Lamborghini Huracán STO : V10 5.2 atmosphérique de 640 cv, 1 339 kg à sec, Cofango monobloc en carbone et 37 % d'appui aérodynamique supplémentaire. Née sur la piste, homologuée pour la route.">
 <meta name="theme-color" content="#000000">
-<meta property="og:title" content="Ducati Superleggera V4 — 152,2 kg. 224 cv. 500 exemplaires.">
-<meta property="og:description" content="La moto de serie la plus legere jamais produite par Ducati. V4 derive de la MotoGP, carbone integral, ailerons biplan. 500 exemplaires dans le monde.">
+<meta property="og:title" content="Lamborghini Huracán STO — 640 cv. 1 339 kg. V10 atmosphérique.">
+<meta property="og:description" content="Le dernier grand V10 atmosphérique de Sant'Agata. Carbone, aérodynamique de Super Trofeo, propulsion.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_FR">
-<meta property="og:site_name" content="Ducati Superleggera V4">
+<meta property="og:site_name" content="Lamborghini Huracán STO">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
 /* ============================================================
@@ -40,15 +40,15 @@ body {
 img, video { display: block; max-width: 100%; }
 
 h1, h2 {
-  font-family: "Anton", "Arial Narrow", Impact, sans-serif;
-  font-weight: 400;
+  font-family: "Chakra Petch", "Arial Narrow", Impact, sans-serif;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: -0.03em;
-  line-height: 0.9;
+  letter-spacing: -0.015em;
+  line-height: 0.92;
   margin: 0;
 }
 
-h1 { font-size: clamp(3rem, 12vw, 11rem); }
+h1 { font-size: clamp(3rem, 11vw, 10rem); }
 h2 { font-size: clamp(2rem, 5.4vw, 4.6rem); }
 
 p { margin: 0; }
@@ -83,12 +83,12 @@ body::after {
 .loader.is-out { opacity: 0; }
 
 .loader-word {
-  font-family: "Anton", "Arial Narrow", Impact, sans-serif;
-  font-weight: 400;
+  font-family: "Chakra Petch", "Arial Narrow", Impact, sans-serif;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: -0.03em;
-  line-height: 0.9;
-  font-size: clamp(2.2rem, 6vw, 3.6rem);
+  letter-spacing: 0.06em;
+  line-height: 0.92;
+  font-size: clamp(1.6rem, 4.4vw, 2.6rem);
 }
 
 .loader-bar {
@@ -103,7 +103,7 @@ body::after {
 .loader-fill {
   position: absolute;
   inset: 0;
-  background: #CC0000;
+  background: #FFD100;
   transform: scaleX(0);
   transform-origin: left;
 }
@@ -125,7 +125,7 @@ body::after {
   left: 0;
   width: 100%;
   height: 2px;
-  background: #CC0000;
+  background: #FFD100;
   transform: scaleX(0);
   transform-origin: left;
   z-index: 10;
@@ -146,11 +146,11 @@ body::after {
   gap: 16px;
 }
 .hdr-mark {
-  font-family: "Anton", "Arial Narrow", Impact, sans-serif;
-  font-weight: 400;
-  font-size: 15px;
+  font-family: "Chakra Petch", "Arial Narrow", Impact, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
   text-transform: uppercase;
-  letter-spacing: -0.03em;
+  letter-spacing: 0.22em;
 }
 .hdr-meta {
   font-size: 11px;
@@ -219,14 +219,13 @@ body::after {
 
 .wc { will-change: transform, opacity, filter; }
 
-/* Alignements */
 .b-hero, .b-power, .b-weight, .b-carbon, .b-outro { justify-content: center; text-align: center; }
 .b-hero .inner, .b-power .inner, .b-weight .inner, .b-carbon .inner, .b-outro .inner { margin: 0 auto; }
 .b-engine { justify-content: flex-start; text-align: left; }
 .b-engine .inner { max-width: 40%; }
 .b-aero { justify-content: flex-end; text-align: right; }
 
-/* Kicker */
+/* Kicker : marqueur biseauté plutôt qu'un simple tiret */
 .kicker {
   font-size: 11px;
   font-weight: 600;
@@ -238,18 +237,20 @@ body::after {
 .b-engine .kicker::before {
   content: "";
   display: inline-block;
-  width: 28px;
-  height: 2px;
-  background: #CC0000;
+  width: 26px;
+  height: 8px;
+  background: #FFD100;
+  clip-path: polygon(6px 0, 26px 0, 20px 8px, 0 8px);
   vertical-align: middle;
   margin-right: 14px;
 }
 .b-aero .kicker::after {
   content: "";
   display: inline-block;
-  width: 28px;
-  height: 2px;
-  background: #CC0000;
+  width: 26px;
+  height: 8px;
+  background: #FFD100;
+  clip-path: polygon(0 0, 20px 0, 26px 8px, 6px 8px);
   vertical-align: middle;
   margin-left: 14px;
 }
@@ -323,11 +324,11 @@ body::after {
 
 /* COMPTEUR */
 .counter {
-  font-family: "Anton", "Arial Narrow", Impact, sans-serif;
-  font-weight: 400;
-  font-size: clamp(5rem, 18vw, 15rem);
-  line-height: 0.9;
-  letter-spacing: -0.03em;
+  font-family: "Chakra Petch", "Arial Narrow", Impact, sans-serif;
+  font-weight: 700;
+  font-size: clamp(5rem, 17vw, 14rem);
+  line-height: 0.92;
+  letter-spacing: -0.015em;
   font-variant-numeric: tabular-nums;
   display: flex;
   align-items: baseline;
@@ -336,7 +337,7 @@ body::after {
 }
 .counter-unit {
   font-size: 0.22em;
-  color: #CC0000;
+  color: #FFD100;
   letter-spacing: 0.1em;
 }
 
@@ -365,7 +366,7 @@ body::after {
 .carbon-list li:last-child { border-bottom: 1px solid rgba(255, 255, 255, 0.22); }
 .carbon-list b { font-weight: 500; color: rgba(255, 255, 255, 0.62); }
 
-/* CTA */
+/* CTA : balayage diagonal, signature angulaire */
 .cta {
   position: relative;
   display: inline-block;
@@ -382,20 +383,22 @@ body::after {
   background: transparent;
   pointer-events: auto;
   overflow: hidden;
-  transition: border-color 420ms cubic-bezier(0.65, 0, 0.35, 1);
+  transition: border-color 420ms cubic-bezier(0.65, 0, 0.35, 1), color 420ms cubic-bezier(0.65, 0, 0.35, 1);
 }
 .cta::before {
   content: "";
   position: absolute;
-  inset: 0;
-  background: #CC0000;
-  transform: scaleX(0);
-  transform-origin: left;
+  top: -2px;
+  bottom: -2px;
+  left: -18%;
+  width: 136%;
+  background: #FFD100;
+  transform: translateX(-102%) skewX(-18deg);
   transition: transform 420ms cubic-bezier(0.65, 0, 0.35, 1);
 }
 .cta span { position: relative; z-index: 1; }
-.cta:hover, .cta:focus-visible { border-color: #CC0000; }
-.cta:hover::before, .cta:focus-visible::before { transform: scaleX(1); }
+.cta:hover, .cta:focus-visible { border-color: #FFD100; color: #000000; }
+.cta:hover::before, .cta:focus-visible::before { transform: translateX(0) skewX(-18deg); }
 
 /* ============================================================
    FALLBACK iOS
@@ -414,7 +417,7 @@ body::after {
 }
 
 /* ============================================================
-   MODE STATIQUE (reduced motion / sans JS)
+   MODE STATIQUE (mouvement réduit / sans JS)
    ============================================================ */
 .static #track { height: auto; }
 .static .scene { position: static; height: auto; overflow: visible; }
@@ -466,12 +469,13 @@ body::after {
   .b-aero { text-align: center; }
   .b-engine .kicker::before,
   .b-aero .kicker::after { display: none; }
-  h1 { font-size: clamp(2.6rem, 15vw, 5rem); }
+  h1 { font-size: clamp(2.4rem, 13vw, 5rem); }
   h2 { font-size: clamp(1.8rem, 9vw, 3rem); }
   .carbon-list { min-width: 0; }
   .carbon-list li { letter-spacing: 0.14em; gap: 12px; }
   .cta { padding: 16px 32px; letter-spacing: 0.28em; }
   .hdr { padding: 18px 16px; }
+  .hdr-mark { letter-spacing: 0.14em; }
   .hdr-meta { letter-spacing: 0.2em; font-size: 10px; }
   .static .block { padding: 48px 24px; text-align: left; }
 }
@@ -511,31 +515,36 @@ body::after {
 <body>
 
 <div class="loader" id="loader" aria-hidden="true">
-  <div class="loader-word">Ducati</div>
+  <div class="loader-word">Lamborghini</div>
   <div class="loader-bar"><div class="loader-fill" id="loaderFill"></div></div>
-  <div class="loader-sub">Superleggera V4</div>
+  <div class="loader-sub">Huracán STO</div>
 </div>
 
 <div class="progress" id="progress" aria-hidden="true"></div>
 
 <header class="hdr">
-  <div class="hdr-mark">Ducati</div>
-  <div class="hdr-meta">Superleggera V4 · 001 / 500</div>
+  <div class="hdr-mark">Lamborghini</div>
+  <div class="hdr-meta">Huracán STO · Super Trofeo Omologata</div>
 </header>
 
 <main id="track">
   <div class="scene">
 
+    <!-- VIDEO : remplacer src par votre fichier.
+         H.264, une image-clé toutes les 6 frames, sinon le scrubbing se fige :
+         ffmpeg -i source.mp4 -c:v libx264 -pix_fmt yuv420p -crf 21 -g 6 \
+                -keyint_min 6 -sc_threshold 0 -an -movflags +faststart huracan.mp4
+         Le site reste fonctionnel si la vidéo est absente : le texte s'anime quand même. -->
     <video id="video" muted playsinline webkit-playsinline preload="auto" disablepictureinpicture>
-      <source src="https://res.cloudinary.com/dk2kai0as/video/upload/v1787946182/videoducatti_ntx5mb.mp4" type="video/mp4">
+      <source src="video/huracan.mp4" type="video/mp4">
     </video>
 
     <div class="veil"></div>
 
-    <section class="block b-hero" aria-label="Ducati Superleggera V4">
+    <section class="block b-hero" aria-label="Lamborghini Huracán STO">
       <div class="inner">
-        <h1>Superleggera V4</h1>
-        <p class="hero-sub">Ducati. 100 anni.</p>
+        <h1>Huracán STO</h1>
+        <p class="hero-sub">Lamborghini. Super Trofeo Omologata.</p>
       </div>
       <div class="scroll-hint" aria-hidden="true">
         <span>Scroll</span>
@@ -546,57 +555,57 @@ body::after {
     <section class="block b-engine" aria-label="Le moteur">
       <div class="inner">
         <p class="kicker">Le moteur</p>
-        <h2>Desmosedici Stradale R</h2>
-        <p class="lead">Dérivé directement de la MotoGP, le V4 le plus abouti jamais monté sur une Ducati de série. Distribution desmodromique, régime maximal de 15 500 tr/min.</p>
-        <p class="spec">998 cm³ · V4 90° · vilebrequin contre-rotatif</p>
+        <h2>V10 atmosphérique</h2>
+        <p class="lead">Cinq litres deux, dix cylindres, aucune suralimentation. Le dernier grand atmosphérique de Sant'Agata ne doit sa puissance qu'au régime, et le fait entendre jusqu'à la coupure.</p>
+        <p class="spec">5 204 cm³ · V10 à 90° · propulsion</p>
       </div>
     </section>
 
     <section class="block b-power" aria-label="La puissance">
       <div class="inner">
         <p class="kicker">La puissance</p>
-        <p class="counter"><span id="counter">224</span><span class="counter-unit">CV</span></p>
-        <p class="spec">234 cv avec le kit racing Akrapovič</p>
+        <p class="counter"><span id="counter">640</span><span class="counter-unit">CV</span></p>
+        <p class="spec">565 Nm à 6 500 tr/min · 0 à 100 km/h en 3,0 s</p>
       </div>
     </section>
 
     <section class="block b-weight" aria-label="Le poids">
       <div class="inner">
         <p class="kicker">Le poids</p>
-        <h2>152,2 kg à sec</h2>
-        <p class="lead">La moto de série la plus légère jamais produite par Ducati.</p>
-        <p class="spec">Ratio poids / puissance : 0,68 kg par cv</p>
+        <h2>1 339 kg à sec</h2>
+        <p class="lead">Quarante-trois kilos de moins que la Performante, gagnés panneau par panneau plutôt que par la puissance.</p>
+        <p class="spec">Ratio poids / puissance : 2,09 kg par cv</p>
       </div>
     </section>
 
     <section class="block b-aero" aria-label="L'aérodynamique">
       <div class="inner">
         <p class="kicker">L'aérodynamique</p>
-        <h2>Ailerons biplan</h2>
-        <p class="lead">Directement dérivés de la Desmosedici GP16, les ailerons en carbone génèrent l'appui le plus élevé jamais atteint sur une moto homologuée.</p>
-        <p class="spec">50 kg d'appui à 270 km/h</p>
+        <h2>Cofango</h2>
+        <p class="lead">Capot, ailes et pare-chocs avant forment une seule pièce en carbone, basculante d'un bloc. Derrière, l'aileron réglable et l'extracteur sont ceux de la Super Trofeo EVO.</p>
+        <p class="spec">37 % d'appui aérodynamique en plus</p>
       </div>
     </section>
 
     <section class="block b-carbon" aria-label="Le carbone">
       <div class="inner">
         <p class="kicker">Le carbone</p>
-        <h2>Fibre intégrale</h2>
+        <h2>Structure allégée</h2>
         <ul class="carbon-list">
-          <li>Cadre monocoque <b>−1,7 kg</b></li>
-          <li>Sous-cadre <b>−1,2 kg</b></li>
-          <li>Bras oscillant <b>−0,9 kg</b></li>
-          <li>Jantes <b>−3,4 kg</b></li>
-          <li>Carénages <b>−1,8 kg</b></li>
+          <li>Panneaux extérieurs <b>75 % carbone</b></li>
+          <li>Cofango avant <b>Monobloc</b></li>
+          <li>Jantes <b>Magnésium forgé</b></li>
+          <li>Freins <b>Carbone-céramique</b></li>
+          <li>Vitrage <b>Allégé</b></li>
         </ul>
       </div>
     </section>
 
-    <section class="block b-outro" aria-label="500 exemplaires dans le monde">
+    <section class="block b-outro" aria-label="Née sur la piste, homologuée pour la route">
       <div class="inner">
-        <h2>500 exemplaires<br>dans le monde</h2>
-        <p class="lead">Chaque machine est numérotée, livrée avec son certificat d'authenticité et l'accès au programme SBK Experience.</p>
-        <a class="cta" href="fiche-technique.html" aria-label="Découvrir la fiche technique de la Ducati Superleggera V4"><span>Découvrir</span></a>
+        <h2>Née sur la piste<br>homologuée pour la route</h2>
+        <p class="lead">Dérivée sans détour de la Huracán Super Trofeo EVO et de la GT3 EVO, la STO est la seule à porter cette filiation jusque sur route ouverte.</p>
+        <a class="cta" href="fiche-technique.html" aria-label="Découvrir la fiche technique de la Lamborghini Huracán STO"><span>Découvrir</span></a>
       </div>
     </section>
 
@@ -659,6 +668,7 @@ body::after {
      garde-fou de 8 s avant de se debloquer. */
   var source = video.querySelector("source");
   if (source) { source.addEventListener("error", closeLoader); }
+  video.addEventListener("error", closeLoader);
   window.setTimeout(closeLoader, 8000);
 
   /* ---------------------------------------------------------
@@ -714,7 +724,7 @@ body::after {
       });
     }
 
-    counterEl.textContent = "224";
+    counterEl.textContent = "640";
 
     var syncBlocks = function (self) {
       var p = self.progress * 100;
@@ -828,7 +838,7 @@ body::after {
 
     var counter = { v: 0 };
     tl.to(counter, {
-      v: 224,
+      v: 640,
       duration: 9,
       onUpdate: function () { counterEl.textContent = Math.round(counter.v); }
     }, 31);
@@ -839,8 +849,9 @@ body::after {
   }
 
   /* L'initialisation attend les metadonnees de la video. Garde-fou :
-     si la video n'arrive jamais (codec, reseau, CORS), la timeline de
-     texte est montee quand meme pour ne pas laisser une page vide. */
+     si la video n'arrive jamais (codec, reseau, CORS, fichier absent),
+     la timeline de texte est montee quand meme pour ne pas laisser une
+     page vide. */
   if (video.readyState >= 1) {
     init();
   } else {
