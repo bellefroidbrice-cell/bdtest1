@@ -7,6 +7,7 @@ import { IconButton } from '@/components/ui/icon-button';
 import { Sheet } from '@/components/ui/sheet';
 import { Text } from '@/components/ui/text';
 import { Spacing } from '@/constants/theme';
+import { clampStart, SLOT_MINUTES, snapToSlot } from '@/lib/agenda';
 import {
   addDays,
   addMonths,
@@ -19,12 +20,23 @@ import {
 } from '@/lib/date';
 import type { Priority, Project } from '@/store/types';
 
-function PickerRow({ label, children }: { label: string; children: React.ReactNode }) {
+function PickerRow({
+  label,
+  right,
+  children,
+}: {
+  label: string;
+  right?: React.ReactNode;
+  children: React.ReactNode;
+}) {
   return (
     <View style={styles.row}>
-      <Text variant="label" tone="secondary">
-        {label}
-      </Text>
+      <View style={styles.rowHeader}>
+        <Text variant="label" tone="secondary">
+          {label}
+        </Text>
+        {right}
+      </View>
       <ScrollView
         horizontal
         showsHorizontalScrollIndicator={false}
@@ -107,11 +119,40 @@ export function DatePicker({
   );
 }
 
-/** Créneaux proposés dans la feuille : de 6 h 00 à 22 h 45, par tranches de 15 minutes. */
+/** Tous les créneaux de la journée, par tranches de 15 minutes. */
 function timeSlots(): number[] {
   const slots: number[] = [];
-  for (let minutes = 6 * 60; minutes <= 22 * 60 + 45; minutes += 15) slots.push(minutes);
+  for (let minutes = 0; minutes <= 23 * 60 + 45; minutes += SLOT_MINUTES) slots.push(minutes);
   return slots;
+}
+
+/** Valeur courante, ajustable par pas de 15 minutes. */
+function Stepper({
+  value,
+  onStep,
+  unit,
+}: {
+  value: string;
+  onStep: (delta: number) => void;
+  unit: string;
+}) {
+  return (
+    <View style={styles.stepper}>
+      <Text variant="label">{value}</Text>
+      <IconButton
+        name="remove"
+        label={`${unit} : 15 minutes de moins`}
+        size={18}
+        onPress={() => onStep(-SLOT_MINUTES)}
+      />
+      <IconButton
+        name="add"
+        label={`${unit} : 15 minutes de plus`}
+        size={18}
+        onPress={() => onStep(SLOT_MINUTES)}
+      />
+    </View>
+  );
 }
 
 export function TimePicker({
@@ -127,8 +168,22 @@ export function TimePicker({
 
   return (
     <>
-      <PickerRow label="Heure de début">
+      <PickerRow
+        label="Heure de début"
+        right={
+          value !== null ? (
+            <Stepper
+              value={formatTime(value)}
+              unit="Heure de début"
+              onStep={(delta) => onChange(clampStart(value + delta))}
+            />
+          ) : undefined
+        }>
         <Chip label="Sans horaire" selected={value === null} onPress={() => onChange(null)} />
+        {/* Un horaire choisi hors des propositions reste visible en tête de rangée. */}
+        {isCustom && value !== null && (
+          <Chip label={formatTime(value)} selected onPress={() => setSheetOpen(true)} />
+        )}
         {quick.map((minutes) => (
           <Chip
             key={minutes}
@@ -137,11 +192,7 @@ export function TimePicker({
             onPress={() => onChange(minutes)}
           />
         ))}
-        <Chip
-          label={isCustom && value !== null ? formatTime(value) : 'Autre…'}
-          selected={isCustom}
-          onPress={() => setSheetOpen(true)}
-        />
+        <Chip label="Autre…" onPress={() => setSheetOpen(true)} />
       </PickerRow>
 
       <Sheet visible={sheetOpen} title="Choisir une heure" onClose={() => setSheetOpen(false)}>
@@ -152,7 +203,7 @@ export function TimePicker({
               label={formatTime(minutes)}
               selected={value === minutes}
               onPress={() => {
-                onChange(minutes);
+                onChange(snapToSlot(minutes));
                 setSheetOpen(false);
               }}
             />
@@ -170,8 +221,13 @@ export function DurationPicker({
   value: number;
   onChange: (value: number) => void;
 }) {
+  const step = (delta: number) =>
+    onChange(Math.max(SLOT_MINUTES, Math.min(12 * 60, value + delta)));
+
   return (
-    <PickerRow label="Durée">
+    <PickerRow
+      label="Durée"
+      right={<Stepper value={formatDuration(value)} unit="Durée" onStep={step} />}>
       {[15, 30, 45, 60, 90, 120].map((minutes) => (
         <Chip
           key={minutes}
@@ -233,6 +289,13 @@ export function ProjectPicker({
 
 const styles = StyleSheet.create({
   row: { gap: Spacing.two },
+  rowHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    minHeight: 34,
+  },
+  stepper: { flexDirection: 'row', alignItems: 'center', gap: Spacing.two },
   chips: { flexDirection: 'row', gap: Spacing.two, paddingRight: Spacing.four },
   monthHeader: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
   slots: { maxHeight: 320 },

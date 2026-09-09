@@ -8,6 +8,7 @@ import { Card } from '@/components/ui/card';
 import { Field } from '@/components/ui/field';
 import { Screen } from '@/components/ui/screen';
 import { Spacing } from '@/constants/theme';
+import { clampStart, snapToSlot } from '@/lib/agenda';
 import { todayISO, type ISODate } from '@/lib/date';
 import { usePlanner } from '@/store/planner-store';
 import type { Priority } from '@/store/types';
@@ -16,14 +17,18 @@ const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
 
 export default function NewTaskScreen() {
   const router = useRouter();
-  const params = useLocalSearchParams<{ date?: string }>();
+  const params = useLocalSearchParams<{ date?: string; start?: string }>();
   const { state, actions } = usePlanner();
 
   const [title, setTitle] = useState('');
   const [date, setDate] = useState<ISODate | null>(
     params.date && ISO_DATE.test(params.date) ? params.date : todayISO()
   );
-  const [startMinutes, setStartMinutes] = useState<number | null>(null);
+  // `start` est renseigné quand la tâche est créée depuis un créneau de l'agenda.
+  const [startMinutes, setStartMinutes] = useState<number | null>(() => {
+    const parsed = Number(params.start);
+    return Number.isFinite(parsed) ? snapToSlot(clampStart(parsed)) : null;
+  });
   const [durationMinutes, setDurationMinutes] = useState(30);
   const [priority, setPriority] = useState<Priority>('normale');
   const [projectId, setProjectId] = useState<string | null>(null);

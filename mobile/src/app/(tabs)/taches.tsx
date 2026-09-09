@@ -1,6 +1,7 @@
+import Ionicons from '@expo/vector-icons/Ionicons';
 import { useRouter } from 'expo-router';
 import { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Pressable, StyleSheet, TextInput, View } from 'react-native';
 
 import { TaskRow } from '@/components/task-row';
 import { Card } from '@/components/ui/card';
@@ -11,7 +12,8 @@ import { Field } from '@/components/ui/field';
 import { Screen } from '@/components/ui/screen';
 import { SectionTitle } from '@/components/ui/section-title';
 import { Text } from '@/components/ui/text';
-import { Spacing } from '@/constants/theme';
+import { Radius, Spacing } from '@/constants/theme';
+import { useTheme } from '@/hooks/use-theme';
 import { formatLong, formatRelativeDay, todayISO } from '@/lib/date';
 import { usePlanner } from '@/store/planner-store';
 import {
@@ -35,10 +37,19 @@ const FILTERS: { key: Filter; label: string }[] = [
 
 export default function TasksScreen() {
   const router = useRouter();
+  const colors = useTheme();
   const { state, actions } = usePlanner();
   const today = todayISO();
   const [filter, setFilter] = useState<Filter>('a-faire');
   const [query, setQuery] = useState('');
+  const [draft, setDraft] = useState('');
+
+  // L'ajout rapide date la tâche du jour, sauf dans la liste « Sans date ».
+  const quickAdd = () => {
+    if (!draft.trim()) return;
+    actions.createTask({ title: draft, date: filter === 'sans-date' ? null : today });
+    setDraft('');
+  };
 
   const matching = searchTasks(state.tasks, query);
   const late = overdueTasks(matching, today);
@@ -71,6 +82,31 @@ export default function TasksScreen() {
       <Screen scroll withTabBar>
         <View style={styles.container}>
           <Text variant="display">Tâches</Text>
+
+          {filter !== 'terminees' && (
+            <View style={[styles.quickAdd, { borderColor: colors.border }]}>
+              <Ionicons name="add" size={20} color={colors.textMuted} />
+              <TextInput
+                value={draft}
+                onChangeText={setDraft}
+                onSubmitEditing={quickAdd}
+                blurOnSubmit={false}
+                returnKeyType="done"
+                placeholder={
+                  filter === 'sans-date' ? 'Ajouter à la liste…' : "Ajouter à aujourd'hui…"
+                }
+                placeholderTextColor={colors.textMuted}
+                style={[styles.quickAddInput, { color: colors.text }]}
+              />
+              {draft.trim().length > 0 && (
+                <Pressable accessibilityRole="button" accessibilityLabel="Ajouter" onPress={quickAdd}>
+                  <Text variant="label" tone="accent">
+                    Ajouter
+                  </Text>
+                </Pressable>
+              )}
+            </View>
+          )}
 
           <Field
             value={query}
@@ -147,6 +183,16 @@ export default function TasksScreen() {
 
 const styles = StyleSheet.create({
   container: { padding: Spacing.four, gap: Spacing.four },
+  quickAdd: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: Spacing.two,
+    borderWidth: 1,
+    borderRadius: Radius.medium,
+    paddingHorizontal: Spacing.three,
+    paddingVertical: Spacing.three,
+  },
+  quickAddInput: { flex: 1, fontSize: 15, lineHeight: 20, paddingVertical: 0 },
   filters: { flexDirection: 'row', gap: Spacing.two, flexWrap: 'wrap' },
   section: { gap: Spacing.two },
   list: { paddingVertical: Spacing.one, paddingHorizontal: Spacing.one },

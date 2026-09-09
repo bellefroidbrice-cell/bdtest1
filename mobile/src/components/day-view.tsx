@@ -2,8 +2,10 @@ import { useRouter } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 
+import { DayAgenda } from '@/components/day-agenda';
 import { TaskRow } from '@/components/task-row';
 import { Card } from '@/components/ui/card';
+import { Chip } from '@/components/ui/chip';
 import { EmptyState } from '@/components/ui/empty-state';
 import { Field } from '@/components/ui/field';
 import { ProgressBar } from '@/components/ui/progress-bar';
@@ -14,14 +16,18 @@ import { formatDuration, formatLong, formatRelativeDay, todayISO, type ISODate }
 import { usePlanner } from '@/store/planner-store';
 import { dayStats, findProject, tasksForDate } from '@/store/selectors';
 
+type Mode = 'agenda' | 'liste';
+
 /**
- * Déroulé d'une journée : objectif, avancement, tâches à l'heure puis sans horaire.
+ * Déroulé d'une journée. Deux lectures de la même journée :
+ * la grille horaire au pas de 15 minutes, ou la liste des tâches.
  * Partagé par l'onglet « Aujourd'hui » et l'écran d'une journée du calendrier.
  */
 export function DayView({ date }: { date: ISODate }) {
   const router = useRouter();
   const { state, actions } = usePlanner();
   const [intention, setIntention] = useState(state.intentions[date] ?? '');
+  const [mode, setMode] = useState<Mode>('agenda');
 
   useEffect(() => {
     setIntention(state.intentions[date] ?? '');
@@ -31,6 +37,10 @@ export function DayView({ date }: { date: ISODate }) {
   const stats = dayStats(state.tasks, date);
   const timed = tasks.filter((task) => task.startMinutes !== null);
   const untimed = tasks.filter((task) => task.startMinutes === null);
+
+  const openTask = (id: string) => router.push(`/tache/${id}`);
+  const createAt = (startMinutes: number) =>
+    router.push(`/tache/nouvelle?date=${date}&start=${startMinutes}`);
 
   return (
     <View style={styles.container}>
@@ -70,21 +80,44 @@ export function DayView({ date }: { date: ISODate }) {
         />
       </Card>
 
-      {tasks.length === 0 && (
-        <EmptyState
-          icon="calendar-clear-outline"
-          title="Rien de prévu"
-          message={
-            date === todayISO()
-              ? "Ajoutez une première tâche pour construire votre journée."
-              : 'Cette journée est encore vide.'
-          }
-        />
-      )}
+      <View style={styles.section}>
+        <SectionTitle
+          right={
+            <View style={styles.modes}>
+              <Chip
+                label="Agenda"
+                compact
+                selected={mode === 'agenda'}
+                onPress={() => setMode('agenda')}
+              />
+              <Chip
+                label="Liste"
+                compact
+                selected={mode === 'liste'}
+                onPress={() => setMode('liste')}
+              />
+            </View>
+          }>
+          Déroulé de la journée
+        </SectionTitle>
 
-      {timed.length > 0 && (
-        <View style={styles.section}>
-          <SectionTitle>Déroulé de la journée</SectionTitle>
+        {mode === 'agenda' ? (
+          <Card style={styles.agendaCard}>
+            <DayAgenda
+              date={date}
+              tasks={timed}
+              projects={state.projects}
+              onPressSlot={createAt}
+              onPressTask={(task) => openTask(task.id)}
+            />
+          </Card>
+        ) : timed.length === 0 ? (
+          <EmptyState
+            icon="time-outline"
+            title="Aucun horaire"
+            message="Touchez un créneau dans l'agenda pour en poser un."
+          />
+        ) : (
           <Card padded={false} style={styles.list}>
             {timed.map((task) => (
               <TaskRow
@@ -93,16 +126,22 @@ export function DayView({ date }: { date: ISODate }) {
                 project={findProject(state.projects, task.projectId)}
                 showTime
                 onToggle={() => actions.toggleTask(task.id)}
-                onPress={() => router.push(`/tache/${task.id}`)}
+                onPress={() => openTask(task.id)}
               />
             ))}
           </Card>
-        </View>
-      )}
+        )}
+      </View>
 
-      {untimed.length > 0 && (
-        <View style={styles.section}>
-          <SectionTitle>Sans horaire</SectionTitle>
+      <View style={styles.section}>
+        <SectionTitle>Sans horaire</SectionTitle>
+        {untimed.length === 0 ? (
+          <Text variant="caption" tone="muted">
+            {date === todayISO()
+              ? 'Tout ce qui est prévu aujourd’hui a une heure.'
+              : 'Aucune tâche sans horaire ce jour-là.'}
+          </Text>
+        ) : (
           <Card padded={false} style={styles.list}>
             {untimed.map((task) => (
               <TaskRow
@@ -110,12 +149,12 @@ export function DayView({ date }: { date: ISODate }) {
                 task={task}
                 project={findProject(state.projects, task.projectId)}
                 onToggle={() => actions.toggleTask(task.id)}
-                onPress={() => router.push(`/tache/${task.id}`)}
+                onPress={() => openTask(task.id)}
               />
             ))}
           </Card>
-        </View>
-      )}
+        )}
+      </View>
     </View>
   );
 }
@@ -137,6 +176,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 0,
     paddingTop: 0,
   },
-  section: { gap: Spacing.two },
+  section: { gap: Spacing.three },
+  modes: { flexDirection: 'row', gap: Spacing.two },
+  agendaCard: { paddingVertical: Spacing.four, paddingHorizontal: Spacing.three },
   list: { paddingVertical: Spacing.one, paddingHorizontal: Spacing.one },
 });

@@ -17,11 +17,22 @@ qui servent uniquement à distinguer. Le thème clair existe et reste soigné :
 
 | Écran | Rôle |
 | --- | --- |
-| **Aujourd'hui** | Objectif du jour, avancement et déroulé horaire de la journée |
+| **Aujourd'hui** | Objectif du jour, avancement, et la journée en grille horaire de 15 minutes |
 | **Calendrier** | Vue mois, charge de chaque journée en un coup d'œil, ouverture d'une journée |
-| **Tâches** | Tout ce qui est à faire : en retard, à venir, sans date, terminées, avec recherche |
+| **Tâches** | La to-do list : ajout rapide au clavier, en retard, à venir, sans date, terminées, recherche |
 | **Projets** | Regroupement des tâches par projet coloré et suivi de l'avancement |
 | **Fiche tâche** | Date, horaire, durée, priorité, projet, notes et **checklist d'étapes** |
+
+## La journée au pas de 15 minutes
+
+L'onglet **Aujourd'hui** et chaque journée du calendrier s'affichent au choix en
+**agenda** ou en **liste**.
+
+L'agenda est une grille dont l'unité est le quart d'heure : chaque créneau vide
+est tactile et ouvre la création d'une tâche déjà calée sur cet horaire. Les
+tâches occupent la hauteur de leur durée, celles qui se chevauchent se placent
+côte à côte, et un trait marque l'heure courante. Partout ailleurs, l'heure de
+début et la durée s'ajustent par pas de 15 minutes avec les boutons − / +.
 
 ## Démarrer
 
