@@ -35,10 +35,10 @@ export function DayView({ date }: { date: ISODate }) {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text variant="display">{formatRelativeDay(date)}</Text>
-        <Text variant="body" tone="secondary">
-          {formatLong(date)}
+        <Text variant="caption" tone="muted">
+          {formatLong(date).toUpperCase()}
         </Text>
+        <Text variant="display">{formatRelativeDay(date)}</Text>
       </View>
 
       <Card>
@@ -122,7 +122,7 @@ export function DayView({ date }: { date: ISODate }) {
 
 const styles = StyleSheet.create({
   container: { padding: Spacing.four, gap: Spacing.five },
-  header: { gap: Spacing.one },
+  header: { gap: Spacing.two },
   statsRow: {
     flexDirection: 'row',
     alignItems: 'baseline',
@@ -130,7 +130,13 @@ const styles = StyleSheet.create({
     gap: Spacing.two,
   },
   progress: { marginTop: Spacing.three, marginBottom: Spacing.four },
-  intention: { minHeight: 64 },
+  intention: {
+    minHeight: 60,
+    backgroundColor: 'transparent',
+    borderWidth: 0,
+    paddingHorizontal: 0,
+    paddingTop: 0,
+  },
   section: { gap: Spacing.two },
   list: { paddingVertical: Spacing.one, paddingHorizontal: Spacing.one },
 });

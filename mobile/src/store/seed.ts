@@ -1,3 +1,4 @@
+import { ProjectColors } from '@/constants/theme';
 import { addDays, todayISO } from '@/lib/date';
 import { createId } from '@/lib/id';
 import { STATE_VERSION, type PlannerState, type Project, type Step, type Task } from './types';
@@ -28,9 +29,9 @@ function makeTask(task: Partial<Task> & Pick<Task, 'title'>): Task {
 export function createSeedState(): PlannerState {
   const today = todayISO();
   const projects: Project[] = [
-    { id: createId(), name: 'Travail', color: '#4F46E5', createdAt: new Date().toISOString() },
-    { id: createId(), name: 'Perso', color: '#10B981', createdAt: new Date().toISOString() },
-    { id: createId(), name: 'Maison', color: '#F59E0B', createdAt: new Date().toISOString() },
+    { id: createId(), name: 'Travail', color: ProjectColors[0], createdAt: new Date().toISOString() },
+    { id: createId(), name: 'Perso', color: ProjectColors[1], createdAt: new Date().toISOString() },
+    { id: createId(), name: 'Maison', color: ProjectColors[2], createdAt: new Date().toISOString() },
   ];
   const [travail, perso, maison] = projects;
 

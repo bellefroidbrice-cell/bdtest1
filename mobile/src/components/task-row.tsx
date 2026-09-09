@@ -36,6 +36,7 @@ export function TaskRow({
   if (!showTime && task.startMinutes !== null) meta.push(formatTime(task.startMinutes));
   if (task.startMinutes !== null) meta.push(formatDuration(task.durationMinutes));
   if (project) meta.push(project.name);
+  if (task.priority === 'haute' && !task.done) meta.push('Prioritaire');
 
   return (
     <Pressable
@@ -64,15 +65,12 @@ export function TaskRow({
         <View style={styles.titleRow}>
           {project && <View style={[styles.dot, { backgroundColor: project.color }]} />}
           <Text
-            variant="heading"
+            variant="body"
             numberOfLines={2}
             tone={task.done ? 'muted' : 'default'}
             style={[styles.title, task.done && styles.doneTitle]}>
             {task.title}
           </Text>
-          {task.priority === 'haute' && !task.done && (
-            <Ionicons name="flag" size={13} color={colors.danger} />
-          )}
         </View>
 
         {(meta.length > 0 || steps) && (
@@ -83,18 +81,12 @@ export function TaskRow({
               </Text>
             )}
             {steps && (
-              <View style={[styles.stepsBadge, { backgroundColor: colors.surfaceAlt }]}>
-                <Ionicons
-                  name="list-outline"
-                  size={11}
-                  color={steps.done === steps.total ? colors.success : colors.textSecondary}
-                />
-                <Text
-                  variant="caption"
-                  tone={steps.done === steps.total ? 'success' : 'secondary'}>
-                  {steps.done}/{steps.total}
-                </Text>
-              </View>
+              <Text
+                variant="caption"
+                tone={steps.done === steps.total ? 'success' : 'muted'}>
+                {meta.length > 0 ? '· ' : ''}
+                {steps.done}/{steps.total} étapes
+              </Text>
             )}
           </View>
         )}
@@ -108,23 +100,15 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'flex-start',
     gap: Spacing.three,
-    paddingVertical: Spacing.three,
+    paddingVertical: Spacing.four,
     paddingHorizontal: Spacing.three,
     borderRadius: Radius.medium,
   },
-  timeColumn: { width: 52, paddingTop: 2 },
+  timeColumn: { width: 54, paddingTop: 1 },
   content: { flex: 1, gap: Spacing.one },
   titleRow: { flexDirection: 'row', alignItems: 'center', gap: Spacing.two },
   title: { flexShrink: 1 },
   doneTitle: { textDecorationLine: 'line-through' },
-  dot: { width: 8, height: 8, borderRadius: 4 },
-  metaRow: { flexDirection: 'row', alignItems: 'center', gap: Spacing.two, flexWrap: 'wrap' },
-  stepsBadge: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 3,
-    paddingHorizontal: Spacing.two,
-    paddingVertical: 1,
-    borderRadius: Radius.pill,
-  },
+  dot: { width: 6, height: 6, borderRadius: 3 },
+  metaRow: { flexDirection: 'row', alignItems: 'center', gap: Spacing.one, flexWrap: 'wrap' },
 });

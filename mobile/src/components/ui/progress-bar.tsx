@@ -6,7 +6,7 @@ import { useTheme } from '@/hooks/use-theme';
 export function ProgressBar({
   ratio,
   color,
-  height = 6,
+  height = 3,
 }: {
   /** Valeur entre 0 et 1. */
   ratio: number;

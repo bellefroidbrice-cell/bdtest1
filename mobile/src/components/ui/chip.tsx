@@ -28,15 +28,15 @@ export function Chip({
         styles.chip,
         compact && styles.compact,
         {
-          backgroundColor: selected ? colors.accent : colors.surfaceAlt,
+          backgroundColor: selected ? colors.accent : 'transparent',
           borderColor: selected ? colors.accent : colors.border,
-          opacity: pressed ? 0.7 : 1,
+          opacity: pressed ? 0.6 : 1,
         },
       ]}>
       {dotColor && <View style={[styles.dot, { backgroundColor: dotColor }]} />}
       <Text
         variant="label"
-        style={{ color: selected ? colors.onAccent : colors.text }}
+        style={{ color: selected ? colors.onAccent : colors.textSecondary }}
         numberOfLines={1}>
         {label}
       </Text>
@@ -52,8 +52,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: Spacing.three,
     paddingVertical: Spacing.two,
     borderRadius: Radius.pill,
-    borderWidth: StyleSheet.hairlineWidth,
+    borderWidth: 1,
   },
   compact: { paddingHorizontal: Spacing.two, paddingVertical: Spacing.one },
-  dot: { width: 8, height: 8, borderRadius: 4 },
+  dot: { width: 7, height: 7, borderRadius: 3.5 },
 });

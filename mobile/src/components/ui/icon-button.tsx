@@ -28,10 +28,7 @@ export function IconButton({
       accessibilityLabel={label}
       hitSlop={8}
       onPress={onPress}
-      style={({ pressed }) => [
-        styles.button,
-        { backgroundColor: colors.surfaceAlt, opacity: pressed ? 0.6 : 1 },
-      ]}>
+      style={({ pressed }) => [styles.button, { opacity: pressed ? 0.5 : 1 }]}>
       <Ionicons name={name} size={size} color={color} />
     </Pressable>
   );
@@ -39,8 +36,8 @@ export function IconButton({
 
 const styles = StyleSheet.create({
   button: {
-    width: 36,
-    height: 36,
+    width: 34,
+    height: 34,
     borderRadius: Radius.pill,
     alignItems: 'center',
     justifyContent: 'center',

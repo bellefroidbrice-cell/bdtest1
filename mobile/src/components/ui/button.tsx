@@ -30,7 +30,7 @@ export function Button({
       : variant === 'secondary'
         ? colors.surfaceAlt
         : variant === 'danger'
-          ? colors.dangerSoft
+          ? 'transparent'
           : 'transparent';
   const foreground =
     variant === 'primary' ? colors.onAccent : variant === 'danger' ? colors.danger : colors.text;
@@ -45,7 +45,12 @@ export function Button({
         styles.button,
         {
           backgroundColor: background,
-          borderColor: variant === 'ghost' ? colors.border : 'transparent',
+          borderColor:
+            variant === 'ghost'
+              ? colors.border
+              : variant === 'danger'
+                ? colors.dangerSoft
+                : 'transparent',
           opacity: disabled ? 0.45 : pressed ? 0.75 : 1,
         },
         style,
@@ -67,6 +72,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: Spacing.four,
     paddingVertical: Spacing.three,
     borderRadius: Radius.medium,
-    borderWidth: StyleSheet.hairlineWidth,
+    borderWidth: 1,
   },
 });

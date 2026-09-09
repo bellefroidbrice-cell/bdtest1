@@ -7,7 +7,7 @@ import { Text } from './text';
 export function SectionTitle({ children, right }: { children: string; right?: ReactNode }) {
   return (
     <View style={styles.row}>
-      <Text variant="label" tone="secondary" style={styles.title}>
+      <Text variant="label" tone="muted" style={styles.title}>
         {children.toUpperCase()}
       </Text>
       {right}
@@ -22,5 +22,5 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     gap: Spacing.three,
   },
-  title: { letterSpacing: 0.8, fontSize: 12 },
+  title: { letterSpacing: 1, fontSize: 11, fontWeight: '500' },
 });

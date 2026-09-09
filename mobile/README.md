@@ -7,6 +7,12 @@ fonctionne sur iOS et Android à partir du même code.
 Toutes les données restent **sur le téléphone** : aucun compte, aucun serveur,
 fonctionnement hors ligne complet.
 
+L'interface est sobre et construite autour du noir : fond quasi noir, surfaces à
+peine détachées, un seul accent (blanc), et des couleurs de projet désaturées
+qui servent uniquement à distinguer. Le thème clair existe et reste soigné :
+`APPEARANCE` dans `src/hooks/use-color-scheme.ts` accepte `'dark'` (par défaut),
+`'light'` ou `'system'` pour suivre le réglage du téléphone.
+
 ## Écrans
 
 | Écran | Rôle |
@@ -63,4 +69,5 @@ src/
   dépendance ni `Intl`, pour un rendu identique quelle que soit la langue du
   téléphone.
 - **Aucune bibliothèque d'interface externe** : les composants sont dans
-  `src/components/ui`, thème clair et sombre inclus.
+  `src/components/ui`, et les couleurs, espacements et rayons dans
+  `src/constants/theme.ts` — un seul fichier à modifier pour changer le style.

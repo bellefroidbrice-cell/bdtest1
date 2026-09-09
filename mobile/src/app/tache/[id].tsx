@@ -199,7 +199,14 @@ export default function TaskScreen() {
 
 const styles = StyleSheet.create({
   container: { padding: Spacing.four, gap: Spacing.five },
-  title: { fontSize: 22, lineHeight: 28, fontWeight: '700', padding: 0, marginBottom: Spacing.two },
+  title: {
+    fontSize: 21,
+    lineHeight: 27,
+    fontWeight: '600',
+    letterSpacing: -0.4,
+    padding: 0,
+    marginBottom: Spacing.two,
+  },
   mainAction: { marginTop: Spacing.four },
   section: { gap: Spacing.two },
   stepsProgress: { marginBottom: Spacing.three },

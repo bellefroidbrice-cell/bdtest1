@@ -111,12 +111,12 @@ const styles = StyleSheet.create({
   week: { flexDirection: 'row' },
   cell: { flex: 1, alignItems: 'center', paddingVertical: Spacing.half, gap: 2 },
   dayCircle: {
-    width: 34,
-    height: 34,
+    width: 32,
+    height: 32,
     borderRadius: Radius.pill,
     alignItems: 'center',
     justifyContent: 'center',
   },
-  dots: { flexDirection: 'row', gap: 3, height: 6, alignItems: 'center' },
-  dot: { width: 5, height: 5, borderRadius: 3 },
+  dots: { flexDirection: 'row', gap: 3, height: 5, alignItems: 'center' },
+  dot: { width: 4, height: 4, borderRadius: 2 },
 });

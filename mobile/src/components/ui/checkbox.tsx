@@ -50,7 +50,7 @@ export function Checkbox({
 
 const styles = StyleSheet.create({
   box: {
-    borderWidth: 2,
+    borderWidth: 1.5,
     alignItems: 'center',
     justifyContent: 'center',
   },
