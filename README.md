@@ -35,3 +35,11 @@ src/
   types/          types partagés
 prisma/           schéma et migrations de base de données
 ```
+
+## Application mobile
+
+Le dossier `mobile/` contient **Cadence**, une application mobile Expo
+(iOS + Android) d'organisation : plannings, calendrier, tâches et déroulé de
+journée. C'est un projet indépendant du site, avec ses propres dépendances —
+voir [`mobile/README.md`](mobile/README.md).
+
