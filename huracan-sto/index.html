@@ -530,16 +530,16 @@ body::after {
 <main id="track">
   <div class="scene">
 
-    <!-- VIDEO : video/huracan.mp4 est un fond de substitution généré, pas une
+    <!-- VIDEO : video/sto.mp4 est un fond de substitution généré, pas une
          prise de vue de la voiture — un balayage de lumière sur fond sombre,
          calme à l'ouverture puis plus marqué à mesure que l'on descend.
          Pour le remplacer par de vraies images, encoder en H.264 avec une
          image-clé toutes les 6 frames, sinon le scrubbing se fige :
          ffmpeg -i source.mp4 -c:v libx264 -pix_fmt yuv420p -crf 21 -g 6 \
-                -keyint_min 6 -sc_threshold 0 -an -movflags +faststart huracan.mp4
+                -keyint_min 6 -sc_threshold 0 -an -movflags +faststart sto.mp4
          Le site reste fonctionnel si la vidéo est absente : le texte s'anime quand même. -->
     <video id="video" muted playsinline webkit-playsinline preload="auto" disablepictureinpicture>
-      <source src="video/huracan.mp4" type="video/mp4">
+      <source src="video/sto.mp4" type="video/mp4">
     </video>
 
     <div class="veil"></div>
