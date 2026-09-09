@@ -350,11 +350,13 @@ form { display: block; }
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #FFD100;
+  /* Rouge d'erreur distinct de l'accent de marque : #FF4438 donne 6,14:1 sur
+     noir, contre 3,57:1 pour #CC0000, insuffisant pour du texte de 11px. */
+  color: #FF4438;
 }
 .field.invalid input,
 .field.invalid select,
-.field.invalid textarea { border-bottom-color: #FFD100; }
+.field.invalid textarea { border-bottom-color: #FF4438; }
 .field.invalid .err { display: block; }
 
 .consent {
@@ -375,7 +377,7 @@ form { display: block; }
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.62);
 }
-.consent.invalid span { color: #FFD100; }
+.consent.invalid span { color: #FF4438; }
 
 .cta {
   position: relative;
