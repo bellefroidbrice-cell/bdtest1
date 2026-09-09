@@ -41,7 +41,8 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "lint": "expo lint",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "prototype": "expo export --platform web --output-dir dist --clear && node scripts/build-web-prototype.mjs dist cadence-prototype.html"
   },
   "private": true
 }

@@ -49,6 +49,22 @@ Puis, au choix :
 - **Sur un simulateur** : `npm run ios` (macOS) ou `npm run android`.
 - **Dans un navigateur** : `npm run web`.
 
+## Partager le prototype
+
+```bash
+npm run prototype
+```
+
+Produit `cadence-prototype.html` : **une page unique auto-suffisante** (~1,9 Mo)
+où le bundle, la police d'icônes et les images sont intégrés. Elle s'ouvre par
+double-clic, sans serveur ni connexion, et peut être envoyée telle quelle ou
+déposée sur n'importe quel hébergement statique. Les données saisies restent
+dans le navigateur qui l'ouvre.
+
+C'est la version web de l'application : pratique pour montrer le prototype, mais
+la barre d'onglets y est en haut et les gestes natifs manquent — pour juger du
+rendu réel, passer par Expo Go.
+
 ## Vérifications
 
 ```bash
