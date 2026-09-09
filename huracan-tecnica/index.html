@@ -1,0 +1,871 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lamborghini Huracán Tecnica — 640 cv. V10 atmosphérique. Propulsion.</title>
+<meta name="description" content="La Lamborghini Huracán Tecnica : V10 5.2 atmosphérique de 640 cv, propulsion, 35 % d'appui en plus et 20 % de traînée en moins que la STO. La piste sans renoncer à la route.">
+<meta name="theme-color" content="#000000">
+<meta property="og:title" content="Lamborghini Huracán Tecnica — 640 cv. V10 atmosphérique. Propulsion.">
+<meta property="og:description" content="Entre l'EVO et la STO : la puissance de la piste, l'aérodynamique retravaillée, et un habitacle qui reste habitable.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Lamborghini Huracán Tecnica">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: auto;
+  background: #000000;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: #000000;
+  color: #FFFFFF;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 400;
+  overflow-x: hidden;
+}
+
+img, video { display: block; max-width: 100%; }
+
+h1, h2 {
+  font-family: "Chakra Petch", "Arial Narrow", Impact, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.015em;
+  line-height: 0.92;
+  margin: 0;
+}
+
+h1 { font-size: clamp(3rem, 11vw, 10rem); }
+h2 { font-size: clamp(2rem, 5.4vw, 4.6rem); }
+
+p { margin: 0; }
+
+/* Grain de film */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 8;
+  pointer-events: none;
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)'/%3E%3C/svg%3E");
+}
+
+/* ============================================================
+   PRECHARGEMENT
+   ============================================================ */
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: #000000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transition: opacity 600ms ease;
+}
+.loader.is-out { opacity: 0; }
+
+.loader-word {
+  font-family: "Chakra Petch", "Arial Narrow", Impact, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  line-height: 0.92;
+  font-size: clamp(1.6rem, 4.4vw, 2.6rem);
+}
+
+.loader-bar {
+  position: relative;
+  width: 180px;
+  max-width: 60vw;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.14);
+  margin: 26px 0 18px;
+  overflow: hidden;
+}
+.loader-fill {
+  position: absolute;
+  inset: 0;
+  background: #FFD100;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+.loader-sub {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+/* ============================================================
+   CHROME FIXE
+   ============================================================ */
+.progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #FFD100;
+  transform: scaleX(0);
+  transform-origin: left;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.hdr {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9;
+  pointer-events: none;
+  padding: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.hdr-mark {
+  font-family: "Chakra Petch", "Arial Narrow", Impact, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+}
+.hdr-meta {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.62);
+  text-align: right;
+}
+
+/* ============================================================
+   PISTE + SCENE
+   ============================================================ */
+#track {
+  position: relative;
+  height: 600vh;
+}
+
+.scene {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+}
+
+#video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.veil {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 120% 90% at 50% 48%, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.18) 62%, rgba(0, 0, 0, 0.38) 100%),
+    linear-gradient(to top, rgba(0, 0, 0, 0.62) 0%, transparent 28%);
+}
+
+/* ============================================================
+   BLOCS
+   ============================================================ */
+.block {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  padding: 0 clamp(24px, 6vw, 96px);
+  opacity: 0;
+  visibility: hidden;
+  filter: blur(0px);
+}
+
+.block .inner {
+  width: 100%;
+  max-width: 560px;
+}
+
+.wc { will-change: transform, opacity, filter; }
+
+.b-hero, .b-power, .b-drive, .b-outro { justify-content: center; text-align: center; }
+.b-hero .inner, .b-power .inner, .b-drive .inner, .b-outro .inner { margin: 0 auto; }
+.b-engine, .b-design { justify-content: flex-start; text-align: left; }
+.b-engine .inner, .b-design .inner { max-width: 44%; }
+.b-aero { justify-content: flex-end; text-align: right; }
+
+/* Kicker : marqueur biseauté plutôt qu'un simple tiret */
+.kicker {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.62);
+  margin: 0 0 18px;
+}
+.b-engine .kicker::before,
+.b-design .kicker::before {
+  content: "";
+  display: inline-block;
+  width: 26px;
+  height: 8px;
+  background: #FFD100;
+  clip-path: polygon(6px 0, 26px 0, 20px 8px, 0 8px);
+  vertical-align: middle;
+  margin-right: 14px;
+}
+.b-aero .kicker::after {
+  content: "";
+  display: inline-block;
+  width: 26px;
+  height: 8px;
+  background: #FFD100;
+  clip-path: polygon(0 0, 20px 0, 26px 8px, 6px 8px);
+  vertical-align: middle;
+  margin-left: 14px;
+}
+
+.lead {
+  overflow-wrap: break-word;
+  margin-top: 22px;
+  font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+  line-height: 1.62;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.spec {
+  margin-top: 26px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+/* HERO */
+.hero-sub {
+  margin-top: 26px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.44em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+.scroll-hint {
+  position: absolute;
+  left: 50%;
+  bottom: 34px;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+.scroll-hint span {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.62);
+}
+.scroll-hint i {
+  position: relative;
+  display: block;
+  width: 1px;
+  height: 52px;
+  background: rgba(255, 255, 255, 0.22);
+  overflow: hidden;
+}
+.scroll-hint i::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 52px;
+  background: #FFFFFF;
+  animation: sweep 1.8s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+@keyframes sweep {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+/* COMPTEUR */
+.counter {
+  font-family: "Chakra Petch", "Arial Narrow", Impact, sans-serif;
+  font-weight: 700;
+  font-size: clamp(5rem, 17vw, 14rem);
+  line-height: 0.92;
+  letter-spacing: -0.015em;
+  font-variant-numeric: tabular-nums;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.08em;
+}
+.counter-unit {
+  font-size: 0.22em;
+  color: #FFD100;
+  letter-spacing: 0.1em;
+}
+
+/* CARBONE */
+.carbon-list {
+  list-style: none;
+  margin: 32px auto 0;
+  padding: 0;
+  min-width: min(460px, 100%);
+  max-width: 100%;
+  text-align: left;
+}
+.carbon-list li {
+  overflow-wrap: break-word;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 14px 0;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+}
+.carbon-list li:last-child { border-bottom: 1px solid rgba(255, 255, 255, 0.22); }
+.carbon-list b { font-weight: 500; color: rgba(255, 255, 255, 0.62); }
+
+/* CTA : balayage diagonal, signature angulaire */
+.cta {
+  position: relative;
+  display: inline-block;
+  margin-top: 34px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  padding: 17px 54px;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  text-decoration: none;
+  background: transparent;
+  pointer-events: auto;
+  overflow: hidden;
+  transition: border-color 420ms cubic-bezier(0.65, 0, 0.35, 1), color 420ms cubic-bezier(0.65, 0, 0.35, 1);
+}
+.cta::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  left: -18%;
+  width: 136%;
+  background: #FFD100;
+  transform: translateX(-102%) skewX(-18deg);
+  transition: transform 420ms cubic-bezier(0.65, 0, 0.35, 1);
+}
+.cta span { position: relative; z-index: 1; }
+.cta:hover, .cta:focus-visible { border-color: #FFD100; color: #000000; }
+.cta:hover::before, .cta:focus-visible::before { transform: translateX(0) skewX(-18deg); }
+
+/* ============================================================
+   FALLBACK iOS
+   ============================================================ */
+.ios .block {
+  opacity: 0;
+  visibility: visible;
+  transform: translateY(30px);
+  filter: blur(8px);
+  transition: opacity 650ms ease, transform 650ms ease, filter 650ms ease;
+}
+.ios .block.on {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0px);
+}
+
+/* ============================================================
+   MODE STATIQUE (mouvement réduit / sans JS)
+   ============================================================ */
+.static #track { height: auto; }
+.static .scene { position: static; height: auto; overflow: visible; }
+.static #video {
+  position: static;
+  width: 100%;
+  height: 62vh;
+  object-fit: cover;
+}
+.static .veil { display: none; }
+.static .block {
+  position: static;
+  inset: auto;
+  display: block;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+  filter: none !important;
+  transition: none;
+  pointer-events: auto;
+  padding: 64px clamp(24px, 6vw, 96px);
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+  text-align: left;
+  overflow: hidden;
+}
+.static .block .inner { max-width: 720px; margin: 0; }
+.static .b-engine .inner,
+.static .b-design .inner { max-width: 720px; }
+.static .counter { justify-content: flex-start; }
+.static .carbon-list { margin-left: 0; margin-right: 0; }
+.static .loader,
+.static .scroll-hint,
+.static .progress { display: none; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 768px) {
+  #track { height: 400vh; }
+  .block {
+    justify-content: center;
+    text-align: center;
+    padding: 0 24px;
+  }
+  .block .inner,
+  .b-engine .inner,
+  .b-design .inner {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  .b-aero { text-align: center; }
+  .b-engine .kicker::before,
+  .b-design .kicker::before,
+  .b-aero .kicker::after { display: none; }
+  h1 { font-size: clamp(2.4rem, 13vw, 5rem); }
+  h2 { font-size: clamp(1.8rem, 9vw, 3rem); }
+  .carbon-list { min-width: 0; }
+  .carbon-list li { letter-spacing: 0.14em; gap: 12px; }
+  .cta { padding: 16px 32px; letter-spacing: 0.28em; }
+  .hdr { padding: 18px 16px; }
+  .hdr-mark { letter-spacing: 0.14em; }
+  .hdr-meta { letter-spacing: 0.2em; font-size: 10px; }
+  .static .block { padding: 48px 24px; text-align: left; }
+}
+
+@media (max-width: 380px) {
+  .hdr-meta { display: none; }
+}
+</style>
+
+<noscript><style>
+  #track { height: auto; }
+  .scene { position: static; height: auto; overflow: visible; }
+  #video { position: static; width: 100%; height: 62vh; object-fit: cover; }
+  .veil { display: none; }
+  .block {
+    position: static;
+    inset: auto;
+    display: block;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none;
+    pointer-events: auto;
+    padding: 64px clamp(24px, 6vw, 96px);
+    border-top: 1px solid rgba(255, 255, 255, 0.22);
+    text-align: left;
+    overflow: hidden;
+  }
+  .block .inner, .b-engine .inner, .b-design .inner { max-width: 720px; margin: 0; }
+  .counter { justify-content: flex-start; }
+  .carbon-list { margin-left: 0; margin-right: 0; }
+  .loader, .scroll-hint, .progress { display: none; }
+</style></noscript>
+</head>
+
+<body>
+
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="loader-word">Lamborghini</div>
+  <div class="loader-bar"><div class="loader-fill" id="loaderFill"></div></div>
+  <div class="loader-sub">Huracán Tecnica</div>
+</div>
+
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="hdr">
+  <div class="hdr-mark">Lamborghini</div>
+  <div class="hdr-meta">Huracán Tecnica · V10 atmosphérique</div>
+</header>
+
+<main id="track">
+  <div class="scene">
+
+    <!-- VIDEO : video/tecnica.mp4 est un fond de substitution généré, pas une
+         prise de vue de la voiture — un balayage de lumière sur fond sombre.
+         Pour le remplacer par de vraies images, encoder en H.264 avec une
+         image-clé toutes les 6 frames, sinon le scrubbing se fige :
+         ffmpeg -i source.mp4 -c:v libx264 -pix_fmt yuv420p -crf 21 -g 6 \
+                -keyint_min 6 -sc_threshold 0 -an -movflags +faststart tecnica.mp4
+         Le site reste fonctionnel si la vidéo est absente : le texte s'anime quand même. -->
+    <video id="video" muted playsinline webkit-playsinline preload="auto" disablepictureinpicture>
+      <source src="video/tecnica.mp4" type="video/mp4">
+    </video>
+
+    <div class="veil"></div>
+
+    <section class="block b-hero" aria-label="Lamborghini Huracán Tecnica">
+      <div class="inner">
+        <h1>Huracán Tecnica</h1>
+        <p class="hero-sub">Lamborghini. L'équilibre.</p>
+      </div>
+      <div class="scroll-hint" aria-hidden="true">
+        <span>Scroll</span>
+        <i></i>
+      </div>
+    </section>
+
+    <section class="block b-engine" aria-label="Le moteur">
+      <div class="inner">
+        <p class="kicker">Le moteur</p>
+        <h2>V10 atmosphérique</h2>
+        <p class="lead">Le même cinq litres deux que la STO, sans suralimentation ni compromis. Il monte à 8 500 tr/min et ne doit rien à autre chose qu'au régime.</p>
+        <p class="spec">5 204 cm³ · V10 à 90° · propulsion</p>
+      </div>
+    </section>
+
+    <section class="block b-power" aria-label="La puissance">
+      <div class="inner">
+        <p class="kicker">La puissance</p>
+        <p class="counter"><span id="counter">640</span><span class="counter-unit">CV</span></p>
+        <p class="spec">565 Nm à 6 500 tr/min · 325 km/h</p>
+      </div>
+    </section>
+
+    <section class="block b-aero" aria-label="L'aérodynamique">
+      <div class="inner">
+        <p class="kicker">L'aérodynamique</p>
+        <h2>Appui sans traînée</h2>
+        <p class="lead">Trente-cinq pour cent d'appui de plus que l'EVO propulsion, et vingt pour cent de traînée en moins que la STO. L'aileron est fixe, intégré au capot arrière.</p>
+        <p class="spec">+35 % d'appui · −20 % de traînée</p>
+      </div>
+    </section>
+
+    <section class="block b-design" aria-label="Le dessin">
+      <div class="inner">
+        <p class="kicker">Le dessin</p>
+        <h2>Signature en&nbsp;Y</h2>
+        <p class="lead">Le Y de la marque structure la face avant, les prises d'air et les feux. À l'arrière, un becquet en ducktail et une lunette verticale qui laisse voir le V10.</p>
+        <p class="spec">Centro Stile Lamborghini</p>
+      </div>
+    </section>
+
+    <section class="block b-drive" aria-label="Le comportement">
+      <div class="inner">
+        <p class="kicker">Le comportement</p>
+        <h2>Roues arrière directrices</h2>
+        <p class="lead">Une plateforme inertielle qui anticipe plutôt que corriger, et des roues arrière directrices qui raccourcissent la voiture en épingle et l'allongent à haute vitesse.</p>
+        <p class="spec">Strada · Sport · Corsa</p>
+      </div>
+    </section>
+
+    <section class="block b-outro" aria-label="La piste sans renoncer à la route">
+      <div class="inner">
+        <h2>La piste<br>sans renoncer à la route</h2>
+        <p class="lead">Entre l'EVO et la STO, la Tecnica prend à la piste ce qui se conduit tous les jours : la puissance de la STO, l'aérodynamique retravaillée, et un habitacle qui reste habitable.</p>
+        <a class="cta" href="fiche-technique.html" aria-label="Découvrir la fiche technique de la Lamborghini Huracán Tecnica"><span>Découvrir</span></a>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  var root      = document.documentElement;
+  var video     = document.getElementById("video");
+  var track     = document.getElementById("track");
+  var loader    = document.getElementById("loader");
+  var loaderFill= document.getElementById("loaderFill");
+  var progress  = document.getElementById("progress");
+  var counterEl = document.getElementById("counter");
+
+  var REDUCED = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var IS_IOS  = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+                (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
+  /* Plages de la timeline maitresse, en unites de 0 a 100. */
+  var BLOCKS = [
+    { sel: ".b-hero",   start: 0,  end: 10  },
+    { sel: ".b-engine", start: 12, end: 25  },
+    { sel: ".b-power",  start: 28, end: 42  },
+    { sel: ".b-aero",   start: 45, end: 58  },
+    { sel: ".b-design", start: 60, end: 72  },
+    { sel: ".b-drive",  start: 75, end: 88  },
+    { sel: ".b-outro",  start: 90, end: 100 }
+  ];
+
+  /* ---------------------------------------------------------
+     Prechargement
+     --------------------------------------------------------- */
+  var loaderDone = false;
+
+  function closeLoader() {
+    if (loaderDone || !loader) { return; }
+    loaderDone = true;
+    loader.classList.add("is-out");
+    window.setTimeout(function () {
+      if (loader && loader.parentNode) { loader.parentNode.removeChild(loader); }
+    }, 700);
+  }
+
+  video.addEventListener("progress", function () {
+    if (!video.duration || !video.buffered.length) { return; }
+    var ratio = video.buffered.end(video.buffered.length - 1) / video.duration;
+    loaderFill.style.transform = "scaleX(" + Math.min(1, Math.max(0, ratio)) + ")";
+  });
+
+  video.addEventListener("canplaythrough", closeLoader);
+
+  /* Sur un <source> injoignable, l'evenement error part sur le <source>
+     et jamais sur le <video> : sans cette ecoute, la page attendrait le
+     garde-fou de 8 s avant de se debloquer. */
+  var source = video.querySelector("source");
+  if (source) { source.addEventListener("error", closeLoader); }
+  video.addEventListener("error", closeLoader);
+  window.setTimeout(closeLoader, 8000);
+
+  /* ---------------------------------------------------------
+     Mode statique : rien de GSAP
+     --------------------------------------------------------- */
+  if (REDUCED || !window.gsap || !window.ScrollTrigger) {
+    root.classList.add("static");
+    closeLoader();
+    return;
+  }
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* Barre de progression */
+  var setProgress = gsap.quickSetter(progress, "scaleX");
+  ScrollTrigger.create({
+    trigger: track,
+    start: "top top",
+    end: "bottom bottom",
+    onUpdate: function (self) { setProgress(self.progress); }
+  });
+
+  /* will-change actif uniquement dans une plage etendue de 4 % */
+  function scrollSpan() {
+    return Math.max(1, track.offsetHeight - window.innerHeight);
+  }
+  BLOCKS.forEach(function (b) {
+    var el = document.querySelector(b.sel);
+    ScrollTrigger.create({
+      trigger: track,
+      start: function () { return "top top-=" + (Math.max(0, b.start - 4) / 100) * scrollSpan(); },
+      end:   function () { return "top top-=" + (Math.min(100, b.end + 4) / 100) * scrollSpan(); },
+      onToggle: function (self) { el.classList.toggle("wc", self.isActive); }
+    });
+  });
+
+  /* ---------------------------------------------------------
+     Fallback iOS : lecture en boucle, aucun scrubbing
+     --------------------------------------------------------- */
+  if (IS_IOS) {
+    root.classList.add("ios");
+    video.loop = true;
+    video.muted = true;
+
+    var playAttempt = video.play();
+    if (playAttempt && typeof playAttempt.catch === "function") {
+      playAttempt.catch(function () {
+        var resume = function () {
+          video.play();
+          window.removeEventListener("touchstart", resume);
+        };
+        window.addEventListener("touchstart", resume, { once: true, passive: true });
+      });
+    }
+
+    counterEl.textContent = "640";
+
+    var syncBlocks = function (self) {
+      var p = self.progress * 100;
+      BLOCKS.forEach(function (b) {
+        var el = document.querySelector(b.sel);
+        el.classList.toggle("on", p >= b.start && p <= b.end);
+      });
+    };
+
+    var iosTrigger = ScrollTrigger.create({
+      trigger: track,
+      start: "top top",
+      end: "bottom bottom",
+      onUpdate: syncBlocks,
+      onRefresh: syncBlocks
+    });
+
+    /* onUpdate ne se declenche pas a progression nulle : on cale
+       l'etat initial pour que le hero soit visible des l'arrivee. */
+    syncBlocks(iosTrigger);
+
+    ScrollTrigger.refresh();
+    return;
+  }
+
+  /* ---------------------------------------------------------
+     Scrubbing video : lerp dans une boucle rAF dediee
+     --------------------------------------------------------- */
+  var targetTime  = 0;
+  var currentTime = 0;
+  var rafId       = null;
+
+  function tick() {
+    /* Ne jamais empiler un seek sur un seek en cours, ni laisser
+       la valeur interne converger tant que la video n'est pas
+       positionnable : on attend simplement la frame suivante. */
+    if (video.readyState < 2 || video.seeking) {
+      rafId = requestAnimationFrame(tick);
+      return;
+    }
+    var diff = targetTime - currentTime;
+    if (Math.abs(diff) < 0.001) {
+      rafId = null;
+      return;
+    }
+    var k = Math.min(0.35, 0.1 + Math.abs(diff) * 0.03);
+    currentTime += diff * k;
+    video.currentTime = currentTime;
+    rafId = requestAnimationFrame(tick);
+  }
+
+  function startLoop() {
+    if (rafId === null) { rafId = requestAnimationFrame(tick); }
+  }
+
+  var SCRUB = {
+    trigger: track,
+    start: "top top",
+    end: "bottom bottom",
+    scrub: true
+  };
+
+  var scrubAttached = false;
+
+  function attachScrub() {
+    if (scrubAttached || !video.duration || !isFinite(video.duration)) { return; }
+    scrubAttached = true;
+    ScrollTrigger.create(Object.assign({}, SCRUB, {
+      onUpdate: function (self) {
+        targetTime = Math.min(self.progress * video.duration, video.duration - 0.05);
+        startLoop();
+      }
+    }));
+  }
+
+  var timelineBuilt = false;
+
+  function init() {
+    if (timelineBuilt) { return; }
+    timelineBuilt = true;
+
+    attachScrub();
+
+    /* Timeline maitresse : 100 unites exactement. */
+    var tl = gsap.timeline({
+      defaults: { ease: "none" },
+      scrollTrigger: Object.assign({}, SCRUB)
+    });
+
+    counterEl.textContent = "0";
+
+    BLOCKS.forEach(function (b) {
+      var el = document.querySelector(b.sel);
+
+      if (b.sel === ".b-hero") {
+        gsap.set(el, { autoAlpha: 1, y: 0 });
+      } else {
+        tl.fromTo(el,
+          { autoAlpha: 0, y: 30 },
+          { autoAlpha: 1, y: 0, duration: 3 },
+          b.start + 0.5
+        );
+      }
+
+      if (b.sel !== ".b-outro") {
+        tl.to(el, { autoAlpha: 0, filter: "blur(8px)", duration: 3 }, b.end - 1.5);
+      }
+    });
+
+    tl.to(".scroll-hint", { autoAlpha: 0, duration: 2 }, 2);
+
+    var counter = { v: 0 };
+    tl.to(counter, {
+      v: 640,
+      duration: 9,
+      onUpdate: function () { counterEl.textContent = Math.round(counter.v); }
+    }, 31);
+
+    tl.set({}, {}, 100);
+
+    ScrollTrigger.refresh();
+  }
+
+  /* L'initialisation attend les metadonnees de la video. Garde-fou :
+     si la video n'arrive jamais (codec, reseau, CORS, fichier absent),
+     la timeline de texte est montee quand meme pour ne pas laisser une
+     page vide. */
+  if (video.readyState >= 1) {
+    init();
+  } else {
+    video.addEventListener("loadedmetadata", function () {
+      attachScrub();
+      init();
+    }, { once: true });
+    video.addEventListener("error", init, { once: true });
+    if (source) { source.addEventListener("error", init, { once: true }); }
+    window.setTimeout(init, 8000);
+  }
+})();
+</script>
+
+</body>
+</html>

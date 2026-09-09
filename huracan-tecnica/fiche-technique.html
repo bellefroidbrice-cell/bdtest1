@@ -1,0 +1,834 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Fiche technique — Lamborghini Huracán Tecnica</title>
+<meta name="description" content="Fiche technique complète de la Lamborghini Huracán Tecnica : V10 5.2 atmosphérique de 640 cv, propulsion, roues arrière directrices, 35 % d'appui en plus et 20 % de traînée en moins que la STO.">
+<meta name="theme-color" content="#000000">
+<meta property="og:title" content="Fiche technique — Lamborghini Huracán Tecnica">
+<meta property="og:description" content="Moteur, transmission, châssis, freinage, aérodynamique et dessin : toutes les caractéristiques de la Huracán Tecnica.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Lamborghini Huracán Tecnica">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+
+[hidden] { display: none !important; }
+
+html {
+  scroll-behavior: auto;
+  background: #000000;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: #000000;
+  color: #FFFFFF;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 400;
+  overflow-x: hidden;
+}
+
+h1, h2, h3 {
+  font-family: "Chakra Petch", "Arial Narrow", Impact, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.015em;
+  line-height: 0.92;
+  margin: 0;
+}
+h1 { font-size: clamp(2.4rem, 8vw, 6.4rem); }
+h2 { font-size: clamp(1.7rem, 3.6vw, 3rem); }
+h3 { font-size: clamp(1.1rem, 1.8vw, 1.5rem); }
+
+p { margin: 0; }
+a { color: inherit; }
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 8;
+  pointer-events: none;
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)'/%3E%3C/svg%3E");
+}
+
+.wrap {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 clamp(24px, 6vw, 96px);
+}
+
+.kicker {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.62);
+  margin: 0 0 18px;
+}
+.kicker::before {
+  content: "";
+  display: inline-block;
+  width: 26px;
+  height: 8px;
+  background: #FFD100;
+  clip-path: polygon(6px 0, 26px 0, 20px 8px, 0 8px);
+  vertical-align: middle;
+  margin-right: 14px;
+}
+
+.lead {
+  margin-top: 22px;
+  max-width: 560px;
+  font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+  line-height: 1.62;
+  color: rgba(255, 255, 255, 0.78);
+  overflow-wrap: break-word;
+}
+
+/* ============================================================
+   BARRE DE PROGRESSION + EN-TETE
+   ============================================================ */
+.progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #FFD100;
+  transform: scaleX(0);
+  transform-origin: left;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.hdr {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9;
+  padding: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: #000000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+}
+.hdr-mark {
+  font-family: "Chakra Petch", "Arial Narrow", Impact, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  text-decoration: none;
+}
+.hdr-back {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.62);
+  text-decoration: none;
+  transition: color 260ms ease;
+}
+.hdr-back:hover, .hdr-back:focus-visible { color: #FFFFFF; }
+.hdr-back::before {
+  content: "";
+  display: inline-block;
+  width: 22px;
+  height: 1px;
+  background: currentColor;
+  vertical-align: middle;
+  margin-right: 12px;
+}
+
+/* ============================================================
+   INTRO
+   ============================================================ */
+.intro {
+  padding: clamp(120px, 18vh, 200px) 0 clamp(56px, 8vh, 96px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.figures {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(28px, 6vw, 88px);
+  margin-top: clamp(40px, 6vh, 68px);
+}
+.figure-v {
+  font-family: "Chakra Petch", "Arial Narrow", Impact, sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.4rem, 5.4vw, 4.2rem);
+  line-height: 0.92;
+  letter-spacing: -0.015em;
+  font-variant-numeric: tabular-nums;
+}
+.figure-v em {
+  font-style: normal;
+  font-size: 0.26em;
+  color: #FFD100;
+  letter-spacing: 0.1em;
+  margin-left: 0.12em;
+}
+.figure-l {
+  margin-top: 12px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+/* ============================================================
+   CORPS : SOMMAIRE + SPECIFICATIONS
+   ============================================================ */
+.body-grid {
+  display: grid;
+  grid-template-columns: 210px minmax(0, 1fr);
+  gap: clamp(32px, 6vw, 88px);
+  padding: clamp(56px, 9vh, 104px) 0;
+  align-items: start;
+}
+
+.toc { position: sticky; top: 104px; }
+.toc-title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.62);
+  margin-bottom: 20px;
+}
+.toc ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  counter-reset: toc;
+}
+.toc li { counter-increment: toc; }
+.toc a {
+  display: block;
+  padding: 9px 0 9px 14px;
+  border-left: 1px solid rgba(255, 255, 255, 0.22);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.62);
+  text-decoration: none;
+  transition: color 260ms ease, border-color 260ms ease;
+}
+.toc a::before {
+  content: "0" counter(toc);
+  margin-right: 12px;
+  color: rgba(255, 255, 255, 0.38);
+}
+.toc a:hover, .toc a:focus-visible { color: #FFFFFF; }
+.toc a.on { color: #FFFFFF; border-left-color: #FFD100; }
+
+.groups { min-width: 0; }
+
+.group {
+  padding-bottom: clamp(44px, 7vh, 76px);
+  scroll-margin-top: 104px;
+}
+.group:last-of-type { padding-bottom: 0; }
+.group h2 { margin-bottom: 8px; }
+.group-note {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.62);
+  margin-bottom: 26px;
+}
+
+dl { margin: 0; }
+.row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: clamp(16px, 4vw, 60px);
+  padding: 15px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+}
+.row:last-child { border-bottom: 1px solid rgba(255, 255, 255, 0.22); }
+dt {
+  flex: 0 1 auto;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.62);
+  overflow-wrap: break-word;
+}
+dd {
+  flex: 1 1 auto;
+  margin: 0;
+  text-align: right;
+  font-size: clamp(0.9rem, 1.1vw, 1rem);
+  line-height: 1.5;
+  color: #FFFFFF;
+  overflow-wrap: break-word;
+}
+dd b { font-weight: 600; }
+
+.reveal { opacity: 0; transform: translateY(24px); }
+
+/* ============================================================
+   ESSAI
+   ============================================================ */
+.reserve {
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+  padding: clamp(56px, 9vh, 104px) 0 clamp(64px, 10vh, 120px);
+}
+.reserve-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(32px, 6vw, 88px);
+  align-items: start;
+}
+
+form { display: block; }
+.reserve-info { margin-top: clamp(32px, 5vh, 52px); }
+
+.field { margin-bottom: 26px; }
+.field label {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.62);
+  margin-bottom: 10px;
+}
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+  padding: 10px 0;
+  color: #FFFFFF;
+  font-family: inherit;
+  font-size: 15px;
+  transition: border-color 260ms ease;
+}
+.field textarea { resize: vertical; min-height: 92px; }
+.field select { -webkit-appearance: none; appearance: none; }
+.field select option { background: #000000; color: #FFFFFF; }
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  outline: none;
+  border-bottom-color: #FFD100;
+}
+.field input::placeholder,
+.field textarea::placeholder { color: rgba(255, 255, 255, 0.38); }
+.field .err {
+  display: none;
+  margin-top: 9px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  /* Rouge d'erreur distinct de l'accent de marque : #FF4438 donne 6,14:1 sur
+     noir, contre 3,57:1 pour #CC0000, insuffisant pour du texte de 11px. */
+  color: #FF4438;
+}
+.field.invalid input,
+.field.invalid select,
+.field.invalid textarea { border-bottom-color: #FF4438; }
+.field.invalid .err { display: block; }
+
+.consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 30px;
+}
+.consent input {
+  width: 16px;
+  height: 16px;
+  margin: 2px 0 0;
+  accent-color: #FFD100;
+  flex: 0 0 auto;
+}
+.consent span {
+  font-size: 12px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.62);
+}
+.consent.invalid span { color: #FF4438; }
+
+.cta {
+  position: relative;
+  display: inline-block;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  padding: 17px 54px;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  text-decoration: none;
+  background: transparent;
+  cursor: pointer;
+  overflow: hidden;
+  transition: border-color 420ms cubic-bezier(0.65, 0, 0.35, 1), color 420ms cubic-bezier(0.65, 0, 0.35, 1);
+}
+.cta::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  left: -18%;
+  width: 136%;
+  background: #FFD100;
+  transform: translateX(-102%) skewX(-18deg);
+  transition: transform 420ms cubic-bezier(0.65, 0, 0.35, 1);
+}
+.cta span { position: relative; z-index: 1; }
+.cta:hover, .cta:focus-visible { border-color: #FFD100; color: #000000; }
+.cta:hover::before, .cta:focus-visible::before { transform: translateX(0) skewX(-18deg); }
+
+.done {
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  padding: clamp(28px, 4vw, 44px);
+}
+.done h3 { margin-bottom: 16px; }
+
+/* ============================================================
+   PIED DE PAGE
+   ============================================================ */
+.foot {
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+  padding: 34px 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.62);
+}
+.foot a { text-decoration: none; transition: color 260ms ease; }
+.foot a:hover, .foot a:focus-visible { color: #FFFFFF; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 980px) {
+  .body-grid { grid-template-columns: minmax(0, 1fr); }
+  .toc { position: static; display: none; }
+  .reserve-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .kicker::before { display: none; }
+  .hdr { padding: 18px 16px; }
+  .hdr-mark { letter-spacing: 0.14em; }
+  .hdr-back { letter-spacing: 0.2em; font-size: 10px; }
+  .hdr-back::before { width: 14px; margin-right: 8px; }
+  .row { flex-direction: column; align-items: flex-start; gap: 8px; }
+  dd { text-align: left; }
+  .figures { gap: 28px 40px; }
+  .cta { padding: 16px 32px; letter-spacing: 0.28em; width: 100%; text-align: center; }
+}
+
+@media (max-width: 380px) {
+  .hdr-back { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; }
+  .progress { display: none; }
+}
+</style>
+
+<noscript><style>
+  .reveal { opacity: 1; transform: none; }
+  .progress { display: none; }
+</style></noscript>
+</head>
+
+<body>
+
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<header class="hdr">
+  <a class="hdr-mark" href="index.html" aria-label="Retour à l'accueil Lamborghini Huracán Tecnica">Lamborghini</a>
+  <a class="hdr-back" href="index.html">Retour au film</a>
+</header>
+
+<main>
+
+  <section class="intro" aria-label="Fiche technique Huracán Tecnica">
+    <div class="wrap">
+      <p class="kicker">Fiche technique</p>
+      <h1>Huracán Tecnica</h1>
+      <p class="lead">Toutes les caractéristiques de la Huracán qui tient l'équilibre entre la piste et la route. Propulsion, V10 atmosphérique, aérodynamique retravaillée pour gagner en appui sans gagner en traînée.</p>
+      <div class="figures">
+        <div>
+          <p class="figure-v">640<em>CV</em></p>
+          <p class="figure-l">Puissance maximale</p>
+        </div>
+        <div>
+          <p class="figure-v">1 379<em>KG</em></p>
+          <p class="figure-l">Poids à sec</p>
+        </div>
+        <div>
+          <p class="figure-v">325<em>KM/H</em></p>
+          <p class="figure-l">Vitesse maximale</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="body-grid">
+
+      <nav class="toc" aria-label="Sommaire de la fiche technique">
+        <p class="toc-title">Sommaire</p>
+        <ol>
+          <li><a href="#moteur">Moteur</a></li>
+          <li><a href="#performances">Performances</a></li>
+          <li><a href="#transmission">Transmission</a></li>
+          <li><a href="#chassis">Châssis</a></li>
+          <li><a href="#suspensions">Suspensions</a></li>
+          <li><a href="#freinage">Freinage</a></li>
+          <li><a href="#aerodynamique">Aérodynamique</a></li>
+          <li><a href="#dessin">Dessin</a></li>
+          <li><a href="#electronique">Électronique</a></li>
+        </ol>
+      </nav>
+
+      <div class="groups">
+
+        <section class="group reveal" id="moteur" aria-label="Moteur">
+          <h2>Moteur</h2>
+          <p class="group-note">V10 atmosphérique</p>
+          <dl>
+            <div class="row"><dt>Type</dt><dd>V10 à 90°, atmosphérique, position centrale arrière</dd></div>
+            <div class="row"><dt>Cylindrée</dt><dd>5 204 cm³</dd></div>
+            <div class="row"><dt>Alésage × course</dt><dd>84,5 × 92,8 mm</dd></div>
+            <div class="row"><dt>Taux de compression</dt><dd>12,7 : 1</dd></div>
+            <div class="row"><dt>Distribution</dt><dd>4 arbres à cames en tête, 4 soupapes par cylindre</dd></div>
+            <div class="row"><dt>Alimentation</dt><dd>Injection directe et indirecte combinées</dd></div>
+            <div class="row"><dt>Régime maximal</dt><dd>8 500 tr/min</dd></div>
+          </dl>
+        </section>
+
+        <section class="group reveal" id="performances" aria-label="Performances">
+          <h2>Performances</h2>
+          <p class="group-note">La puissance de la STO, l'usage de la route</p>
+          <dl>
+            <div class="row"><dt>Puissance</dt><dd><b>640 cv</b> à 8 000 tr/min</dd></div>
+            <div class="row"><dt>Couple maximal</dt><dd>565 Nm à 6 500 tr/min</dd></div>
+            <div class="row"><dt>Poids à sec</dt><dd><b>1 379 kg</b></dd></div>
+            <div class="row"><dt>Ratio poids / puissance</dt><dd>2,15 kg par cv</dd></div>
+            <div class="row"><dt>0 à 100 km/h</dt><dd>3,2 s</dd></div>
+            <div class="row"><dt>0 à 200 km/h</dt><dd>9,1 s</dd></div>
+            <div class="row"><dt>Vitesse maximale</dt><dd>325 km/h</dd></div>
+            <div class="row"><dt>Freinage 100 à 0 km/h</dt><dd>31,9 m</dd></div>
+          </dl>
+        </section>
+
+        <section class="group reveal" id="transmission" aria-label="Transmission">
+          <h2>Transmission</h2>
+          <p class="group-note">Propulsion, boîte 7 rapports</p>
+          <dl>
+            <div class="row"><dt>Transmission</dt><dd>Propulsion, roues arrière motrices</dd></div>
+            <div class="row"><dt>Boîte de vitesses</dt><dd>7 rapports LDF à double embrayage</dd></div>
+            <div class="row"><dt>Différentiel</dt><dd>Autobloquant mécanique</dd></div>
+            <div class="row"><dt>Roues arrière directrices</dt><dd>Direction intégrale à l'arrière</dd></div>
+          </dl>
+        </section>
+
+        <section class="group reveal" id="chassis" aria-label="Châssis">
+          <h2>Châssis</h2>
+          <p class="group-note">Hybride aluminium et carbone</p>
+          <dl>
+            <div class="row"><dt>Structure</dt><dd>Châssis hybride aluminium et fibre de carbone</dd></div>
+            <div class="row"><dt>Capot moteur</dt><dd>Carbone, lunette verticale laissant voir le V10</dd></div>
+            <div class="row"><dt>Longueur</dt><dd>61 mm de plus que l'EVO, pour l'aérodynamique</dd></div>
+            <div class="row"><dt>Habitacle</dt><dd>Deux places, coffre avant conservé</dd></div>
+          </dl>
+        </section>
+
+        <section class="group reveal" id="suspensions" aria-label="Suspensions et roues">
+          <h2>Suspensions et roues</h2>
+          <p class="group-note">Double triangulation</p>
+          <dl>
+            <div class="row"><dt>Suspensions</dt><dd>Double triangulation, amortisseurs à commande pilotée</dd></div>
+            <div class="row"><dt>Direction</dt><dd>Démultiplication variable, roues arrière directrices</dd></div>
+            <div class="row"><dt>Jantes</dt><dd>20 pouces, dessin spécifique Tecnica</dd></div>
+            <div class="row"><dt>Pneumatiques</dt><dd>Bridgestone Potenza Sport</dd></div>
+          </dl>
+        </section>
+
+        <section class="group reveal" id="freinage" aria-label="Freinage">
+          <h2>Freinage</h2>
+          <p class="group-note">Carbone-céramique</p>
+          <dl>
+            <div class="row"><dt>Disques</dt><dd>Carbone-céramique, de série</dd></div>
+            <div class="row"><dt>Avant</dt><dd>Ø 380 mm, étriers monobloc à 6 pistons</dd></div>
+            <div class="row"><dt>Arrière</dt><dd>Ø 356 mm, étriers à 4 pistons</dd></div>
+            <div class="row"><dt>Refroidissement</dt><dd>Conduits dédiés en face avant</dd></div>
+          </dl>
+        </section>
+
+        <section class="group reveal" id="aerodynamique" aria-label="Aérodynamique">
+          <h2>Aérodynamique</h2>
+          <p class="group-note">Plus d'appui, moins de traînée</p>
+          <dl>
+            <div class="row"><dt>Appui aérodynamique</dt><dd><b>+35 %</b> par rapport à l'EVO propulsion</dd></div>
+            <div class="row"><dt>Traînée</dt><dd><b>−20 %</b> par rapport à la STO</dd></div>
+            <div class="row"><dt>Aileron arrière</dt><dd>Fixe, intégré au capot</dd></div>
+            <div class="row"><dt>Becquet</dt><dd>Ducktail sur la poupe</dd></div>
+            <div class="row"><dt>Extracteur</dt><dd>Diffuseur arrière redessiné</dd></div>
+            <div class="row"><dt>Face avant</dt><dd>Entrées d'air agrandies, refroidissement accru</dd></div>
+          </dl>
+        </section>
+
+        <section class="group reveal" id="dessin" aria-label="Dessin">
+          <h2>Dessin</h2>
+          <p class="group-note">Centro Stile Lamborghini</p>
+          <dl>
+            <div class="row"><dt>Signature</dt><dd>Le Y de la marque structure face avant, prises d'air et feux</dd></div>
+            <div class="row"><dt>Face avant</dt><dd>Bouclier spécifique, inspiré de la Terzo Millennio</dd></div>
+            <div class="row"><dt>Poupe</dt><dd>Becquet ducktail, sortie d'échappement haute</dd></div>
+            <div class="row"><dt>Lunette</dt><dd>Verticale, moteur exposé</dd></div>
+            <div class="row"><dt>Habitacle</dt><dd>Écran central dédié, matériaux allégés en option</dd></div>
+          </dl>
+        </section>
+
+        <section class="group reveal" id="electronique" aria-label="Électronique">
+          <h2>Électronique</h2>
+          <p class="group-note">Trois modes de conduite</p>
+          <dl>
+            <div class="row"><dt>Mode Strada</dt><dd>Route, réglages assouplis</dd></div>
+            <div class="row"><dt>Mode Sport</dt><dd>Route rapide, autorise la dérive maîtrisée</dd></div>
+            <div class="row"><dt>Mode Corsa</dt><dd>Circuit, temps de passage minimal</dd></div>
+            <div class="row"><dt>Contrôle de trajectoire</dt><dd>Plateforme inertielle à anticipation</dd></div>
+            <div class="row"><dt>Contrôle de traction</dt><dd>Réglable, coupure possible en piste</dd></div>
+            <div class="row"><dt>Télémétrie</dt><dd>Acquisition de données et chronométrage embarqués</dd></div>
+          </dl>
+        </section>
+
+      </div>
+    </div>
+  </div>
+
+  <section class="reserve" id="essai" aria-label="Demande d'essai">
+    <div class="wrap">
+      <div class="reserve-grid">
+        <div>
+          <p class="kicker">Essai</p>
+          <h2>Demander un essai</h2>
+          <p class="lead">La Tecnica ne se juge pas sur une fiche. Transmettez votre demande : un conseiller vous recontacte pour organiser un essai sur route ou une session sur circuit.</p>
+          <dl class="reserve-info">
+            <div class="row"><dt>Délai de réponse</dt><dd>48 heures ouvrées</dd></div>
+            <div class="row"><dt>Formats</dt><dd>Essai route ou session circuit accompagnée</dd></div>
+            <div class="row"><dt>Conditions</dt><dd>Permis en cours de validité, majeur</dd></div>
+          </dl>
+        </div>
+
+        <div>
+          <form id="form" novalidate>
+            <div class="field" id="f-nom">
+              <label for="nom">Nom complet</label>
+              <input type="text" id="nom" name="nom" autocomplete="name" placeholder="Prénom et nom">
+              <p class="err">Indiquez votre nom complet</p>
+            </div>
+
+            <div class="field" id="f-email">
+              <label for="email">Adresse e-mail</label>
+              <input type="email" id="email" name="email" autocomplete="email" placeholder="vous@exemple.com">
+              <p class="err">Indiquez une adresse e-mail valide</p>
+            </div>
+
+            <div class="field" id="f-tel">
+              <label for="tel">Téléphone (facultatif)</label>
+              <input type="tel" id="tel" name="tel" autocomplete="tel" placeholder="+32 470 00 00 00">
+            </div>
+
+            <div class="field" id="f-format">
+              <label for="format">Type d'essai</label>
+              <select id="format" name="format">
+                <option value="">Sélectionnez un format</option>
+                <option>Essai sur route</option>
+                <option>Session sur circuit</option>
+                <option>Les deux</option>
+              </select>
+              <p class="err">Sélectionnez un format</p>
+            </div>
+
+            <div class="field" id="f-msg">
+              <label for="message">Message (facultatif)</label>
+              <textarea id="message" name="message" placeholder="Disponibilités, circuit souhaité, question"></textarea>
+            </div>
+
+            <label class="consent" id="f-consent">
+              <input type="checkbox" id="consent" name="consent">
+              <span>J'accepte d'être recontacté au sujet de cette demande et que mes informations soient conservées à cette seule fin.</span>
+            </label>
+
+            <button class="cta" type="submit"><span>Envoyer la demande</span></button>
+          </form>
+
+          <div class="done" id="done" hidden role="status" aria-live="polite">
+            <h3>Demande enregistrée</h3>
+            <p class="lead" id="doneText">Merci, votre demande a bien été prise en compte.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <footer class="foot">
+      <span>Huracán Tecnica · V10 atmosphérique</span>
+      <a href="index.html">Revoir le film</a>
+    </footer>
+  </div>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script>
+(function () {
+  "use strict";
+
+  /* ---------------------------------------------------------
+     Formulaire : validation cote client uniquement.
+     Aucune donnee n'est transmise, le formulaire n'est relie
+     a aucun service — a brancher sur un endpoint reel.
+     --------------------------------------------------------- */
+  var form = document.getElementById("form");
+  var done = document.getElementById("done");
+  var doneText = document.getElementById("doneText");
+
+  function mark(id, bad) {
+    document.getElementById(id).classList.toggle("invalid", bad);
+    return !bad;
+  }
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    var nom = document.getElementById("nom");
+    var email = document.getElementById("email");
+    var format = document.getElementById("format");
+    var consent = document.getElementById("consent");
+
+    var ok = true;
+    ok = mark("f-nom", nom.value.trim().length < 2) && ok;
+    ok = mark("f-email", !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim())) && ok;
+    ok = mark("f-format", format.value === "") && ok;
+    ok = mark("f-consent", !consent.checked) && ok;
+
+    if (!ok) {
+      var first = form.querySelector(".invalid input, .invalid select");
+      if (first) { first.focus(); }
+      return;
+    }
+
+    doneText.textContent = "Merci " + nom.value.trim() +
+      ", votre demande est enregistrée. Un conseiller vous recontacte à l'adresse " +
+      email.value.trim() + " sous 48 heures ouvrées.";
+    form.hidden = true;
+    done.hidden = false;
+    done.scrollIntoView({ block: "center" });
+  });
+
+  /* Retirer l'etat d'erreur des qu'on corrige le champ */
+  var BOXES = { nom: "f-nom", email: "f-email", format: "f-format", consent: "f-consent" };
+  Object.keys(BOXES).forEach(function (id) {
+    var el = document.getElementById(id);
+    var clear = function () { document.getElementById(BOXES[id]).classList.remove("invalid"); };
+    el.addEventListener("input", clear);
+    el.addEventListener("change", clear);
+  });
+
+  /* ---------------------------------------------------------
+     Animations
+     --------------------------------------------------------- */
+  function showAll() {
+    var els = document.querySelectorAll(".reveal");
+    for (var i = 0; i < els.length; i++) {
+      els[i].style.opacity = "1";
+      els[i].style.transform = "none";
+    }
+  }
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches ||
+      !window.gsap || !window.ScrollTrigger) {
+    showAll();
+    return;
+  }
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  var setProgress = gsap.quickSetter(document.getElementById("progress"), "scaleX");
+  ScrollTrigger.create({
+    trigger: document.body,
+    start: "top top",
+    end: "bottom bottom",
+    onUpdate: function (self) { setProgress(self.progress); }
+  });
+
+  gsap.utils.toArray(".reveal").forEach(function (el) {
+    gsap.to(el, {
+      opacity: 1,
+      y: 0,
+      duration: 0.7,
+      ease: "power2.out",
+      scrollTrigger: { trigger: el, start: "top 88%", once: true }
+    });
+  });
+
+  /* Surlignage du sommaire */
+  var links = {};
+  document.querySelectorAll(".toc a").forEach(function (a) {
+    links[a.getAttribute("href").slice(1)] = a;
+  });
+  document.querySelectorAll(".group").forEach(function (section) {
+    ScrollTrigger.create({
+      trigger: section,
+      start: "top 40%",
+      end: "bottom 40%",
+      onToggle: function (self) {
+        var a = links[section.id];
+        if (a) { a.classList.toggle("on", self.isActive); }
+      }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
