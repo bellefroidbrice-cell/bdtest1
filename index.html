@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lamborghini Huracán — STO et Tecnica</title>
+<meta name="description" content="Deux Huracán, deux partis pris : la STO née sur la piste et homologuée pour la route, la Tecnica qui tient l'équilibre entre les deux. V10 atmosphérique, 640 cv.">
+<meta name="theme-color" content="#000000">
+<meta property="og:title" content="Lamborghini Huracán — STO et Tecnica">
+<meta property="og:description" content="Deux Huracán, deux partis pris. V10 atmosphérique, 640 cv.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Lamborghini Huracán">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: auto;
+  background: #000000;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100svh;
+  background: #000000;
+  color: #FFFFFF;
+  font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Grain de film, comme sur les deux sites */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 8;
+  pointer-events: none;
+  opacity: 0.04;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23g)'/%3E%3C/svg%3E");
+}
+
+/* ------------------------------------------------------------
+   EN-TETE
+   ------------------------------------------------------------ */
+.hdr {
+  flex: 0 0 auto;
+  padding: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+}
+.hdr-mark {
+  font-family: "Chakra Petch", "Arial Narrow", Impact, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+}
+.hdr-meta {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.62);
+  text-align: right;
+}
+
+/* ------------------------------------------------------------
+   CHOIX
+   ------------------------------------------------------------ */
+.choix {
+  flex: 1 1 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.carte {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(40px, 6vw, 88px);
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  transition: background-color 420ms cubic-bezier(0.65, 0, 0.35, 1);
+}
+.carte + .carte { border-left: 1px solid rgba(255, 255, 255, 0.22); }
+.carte:hover, .carte:focus-visible { background-color: rgba(255, 255, 255, 0.03); }
+.carte:focus-visible { outline: 1px solid #FFD100; outline-offset: -1px; }
+
+/* Filet jaune qui se déploie depuis la gauche */
+.carte::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: #FFD100;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 420ms cubic-bezier(0.65, 0, 0.35, 1);
+}
+.carte:hover::after, .carte:focus-visible::after { transform: scaleX(1); }
+
+.rang {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.62);
+  margin-bottom: 18px;
+}
+.rang::before {
+  content: "";
+  display: inline-block;
+  width: 26px;
+  height: 8px;
+  background: #FFD100;
+  clip-path: polygon(6px 0, 26px 0, 20px 8px, 0 8px);
+  vertical-align: middle;
+  margin-right: 14px;
+}
+
+.nom {
+  font-family: "Chakra Petch", "Arial Narrow", Impact, sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.2rem, 5.6vw, 5rem);
+  line-height: 0.92;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.phrase {
+  margin-top: 20px;
+  max-width: 42ch;
+  font-size: clamp(0.9rem, 1.2vw, 1.05rem);
+  line-height: 1.62;
+  color: rgba(255, 255, 255, 0.78);
+  overflow-wrap: break-word;
+}
+
+.chiffres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 28px;
+  margin-top: 30px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.62);
+}
+.chiffres b { font-weight: 600; color: #FFFFFF; }
+
+.entrer {
+  margin-top: 38px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+}
+.entrer span {
+  display: inline-block;
+  transition: transform 420ms cubic-bezier(0.65, 0, 0.35, 1);
+}
+.carte:hover .entrer span,
+.carte:focus-visible .entrer span { transform: translateX(12px); }
+.entrer::after {
+  content: "";
+  display: inline-block;
+  width: 22px;
+  height: 1px;
+  background: #FFD100;
+  vertical-align: middle;
+  margin-left: 16px;
+}
+
+/* ------------------------------------------------------------
+   PIED
+   ------------------------------------------------------------ */
+.foot {
+  flex: 0 0 auto;
+  padding: 22px;
+  border-top: 1px solid rgba(255, 255, 255, 0.22);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+/* ------------------------------------------------------------
+   RESPONSIVE
+   ------------------------------------------------------------ */
+@media (max-width: 900px) {
+  .choix { grid-template-columns: 1fr; }
+  .carte + .carte {
+    border-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.22);
+  }
+  .carte { padding: 48px 24px; }
+  .hdr { padding: 18px 16px; }
+  .hdr-mark { letter-spacing: 0.14em; }
+  .hdr-meta { letter-spacing: 0.2em; font-size: 10px; }
+  .foot { padding: 20px 16px; letter-spacing: 0.16em; }
+}
+
+@media (max-width: 420px) {
+  .hdr-meta { display: none; }
+  .rang::before { display: none; }
+  .entrer { letter-spacing: 0.28em; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .carte, .carte::after, .entrer span { transition: none; }
+}
+</style>
+</head>
+
+<body>
+
+<header class="hdr">
+  <div class="hdr-mark">Lamborghini</div>
+  <div class="hdr-meta">Huracán · V10 atmosphérique</div>
+</header>
+
+<main class="choix">
+
+  <a class="carte" href="huracan-sto/" aria-label="Découvrir la Lamborghini Huracán STO">
+    <p class="rang">01 — Super Trofeo Omologata</p>
+    <h1 class="nom">Huracán<br>STO</h1>
+    <p class="phrase">Dérivée sans détour de la Super Trofeo EVO et de la GT3 EVO. Carbone sur les trois quarts de la carrosserie, Cofango monobloc, aérodynamique d'usine.</p>
+    <p class="chiffres">
+      <span><b>640</b> cv</span>
+      <span><b>1 339</b> kg</span>
+      <span><b>3,0</b> s</span>
+    </p>
+    <p class="entrer"><span>Voir le film</span></p>
+  </a>
+
+  <a class="carte" href="huracan-tecnica/" aria-label="Découvrir la Lamborghini Huracán Tecnica">
+    <p class="rang">02 — L'équilibre</p>
+    <h1 class="nom">Huracán<br>Tecnica</h1>
+    <p class="phrase">La puissance de la STO, mais ce qui se conduit tous les jours. Trente-cinq pour cent d'appui en plus, vingt pour cent de traînée en moins, signature en Y.</p>
+    <p class="chiffres">
+      <span><b>640</b> cv</span>
+      <span><b>1 379</b> kg</span>
+      <span><b>325</b> km/h</span>
+    </p>
+    <p class="entrer"><span>Voir le film</span></p>
+  </a>
+
+</main>
+
+<footer class="foot">Deux Huracán, deux partis pris</footer>
+
+</body>
+</html>

@@ -342,31 +342,6 @@ body::after {
   letter-spacing: 0.1em;
 }
 
-/* CARBONE */
-.carbon-list {
-  list-style: none;
-  margin: 32px auto 0;
-  padding: 0;
-  min-width: min(460px, 100%);
-  max-width: 100%;
-  text-align: left;
-}
-.carbon-list li {
-  overflow-wrap: break-word;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-  padding: 14px 0;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  border-top: 1px solid rgba(255, 255, 255, 0.22);
-}
-.carbon-list li:last-child { border-bottom: 1px solid rgba(255, 255, 255, 0.22); }
-.carbon-list b { font-weight: 500; color: rgba(255, 255, 255, 0.62); }
-
 /* CTA : balayage diagonal, signature angulaire */
 .cta {
   position: relative;
@@ -448,7 +423,6 @@ body::after {
 .static .b-engine .inner,
 .static .b-design .inner { max-width: 720px; }
 .static .counter { justify-content: flex-start; }
-.static .carbon-list { margin-left: 0; margin-right: 0; }
 .static .loader,
 .static .scroll-hint,
 .static .progress { display: none; }
@@ -475,8 +449,6 @@ body::after {
   .b-aero .kicker::after { display: none; }
   h1 { font-size: clamp(2.4rem, 13vw, 5rem); }
   h2 { font-size: clamp(1.8rem, 9vw, 3rem); }
-  .carbon-list { min-width: 0; }
-  .carbon-list li { letter-spacing: 0.14em; gap: 12px; }
   .cta { padding: 16px 32px; letter-spacing: 0.28em; }
   .hdr { padding: 18px 16px; }
   .hdr-mark { letter-spacing: 0.14em; }
@@ -511,7 +483,6 @@ body::after {
   }
   .block .inner, .b-engine .inner, .b-design .inner { max-width: 720px; margin: 0; }
   .counter { justify-content: flex-start; }
-  .carbon-list { margin-left: 0; margin-right: 0; }
   .loader, .scroll-hint, .progress { display: none; }
 </style></noscript>
 </head>
