@@ -191,6 +191,41 @@ body::after {
 }
 
 /* ------------------------------------------------------------
+   VOITURE — profil dessiné, pas une photographie
+   ------------------------------------------------------------ */
+.voiture {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin: 30px 0 6px;
+}
+.voiture .caisse {
+  fill: none;
+  stroke: #FFFFFF;
+  stroke-width: 4;
+  stroke-linejoin: miter;
+  stroke-linecap: round;
+}
+.voiture .det {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.45);
+  stroke-width: 2.8;
+  stroke-linejoin: miter;
+  stroke-linecap: round;
+}
+.voiture .roue { fill: none; stroke: #FFFFFF; stroke-width: 4; }
+.voiture .moy { fill: none; stroke: rgba(255, 255, 255, 0.4); stroke-width: 2.8; }
+/* Seul l'élément qui distingue les deux modèles est en jaune */
+.voiture .acc {
+  fill: none;
+  stroke: #FFD100;
+  stroke-width: 4;
+  stroke-linejoin: miter;
+  stroke-linecap: round;
+}
+
+/* ------------------------------------------------------------
    PIED
    ------------------------------------------------------------ */
 .foot {
@@ -244,6 +279,23 @@ body::after {
   <a class="carte" href="huracan-sto/" aria-label="Découvrir la Lamborghini Huracán STO">
     <p class="rang">01 — Super Trofeo Omologata</p>
     <h1 class="nom">Huracán<br>STO</h1>
+  <svg class="voiture" viewBox="0 0 1000 285" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <!-- aile fixe : la signature visuelle de la STO -->
+    <path class="acc" d="M 862 10 L 996 10"/>
+    <path class="det" d="M 884 12 L 892 58"/>
+    <path class="det" d="M 968 12 L 972 66"/>
+    <path class="det" d="M 592 12 L 650 44"/>
+    <path class="caisse" d="M 24 180 L 108 136 L 180 110 L 262 80 L 342 56 L 468 14 L 574 12 L 650 44 L 704 52 L 866 56 L 960 66 L 984 82 L 988 152 L 964 188 L 894 197 L 867 199 L 867 190 A 88 88 0 0 0 691 190 L 650 232 L 338 236 L 279 190 A 80 80 0 0 0 119 190 L 58 222 L 20 228 Z"/>
+    <path class="det" d="M 356 54 L 470 22 L 568 21 L 640 48 L 400 52 Z"/>
+    <path class="det" d="M 648 64 L 750 72 L 756 148 L 654 136 Z"/>
+    <path class="det" d="M 180 114 L 404 94 L 598 78 L 648 68"/>
+    <path class="det" d="M 402 52 L 394 230"/>
+    <circle class="roue" cx="199" cy="190" r="70"/>
+    <circle class="moy" cx="199" cy="190" r="33"/>
+    <circle class="roue" cx="779" cy="190" r="70"/>
+    <circle class="moy" cx="779" cy="190" r="33"/>
+  </svg>
+
     <p class="phrase">Dérivée sans détour de la Super Trofeo EVO et de la GT3 EVO. Carbone sur les trois quarts de la carrosserie, Cofango monobloc, aérodynamique d'usine.</p>
     <p class="chiffres">
       <span><b>640</b> cv</span>
@@ -256,6 +308,20 @@ body::after {
   <a class="carte" href="huracan-tecnica/" aria-label="Découvrir la Lamborghini Huracán Tecnica">
     <p class="rang">02 — L'équilibre</p>
     <h1 class="nom">Huracán<br>Tecnica</h1>
+  <svg class="voiture" viewBox="0 0 1000 285" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <!-- becquet ducktail : la signature visuelle de la Tecnica -->
+    <path class="acc" d="M 936 64 L 986 48 L 992 72"/>
+    <path class="caisse" d="M 24 180 L 108 136 L 180 110 L 262 80 L 342 56 L 468 14 L 574 12 L 650 44 L 704 52 L 866 56 L 960 66 L 984 82 L 988 152 L 964 188 L 894 197 L 867 199 L 867 190 A 88 88 0 0 0 691 190 L 650 232 L 338 236 L 279 190 A 80 80 0 0 0 119 190 L 58 222 L 20 228 Z"/>
+    <path class="det" d="M 356 54 L 470 22 L 568 21 L 640 48 L 400 52 Z"/>
+    <path class="det" d="M 648 64 L 750 72 L 756 148 L 654 136 Z"/>
+    <path class="det" d="M 180 114 L 404 94 L 598 78 L 648 68"/>
+    <path class="det" d="M 402 52 L 394 230"/>
+    <circle class="roue" cx="199" cy="190" r="70"/>
+    <circle class="moy" cx="199" cy="190" r="33"/>
+    <circle class="roue" cx="779" cy="190" r="70"/>
+    <circle class="moy" cx="779" cy="190" r="33"/>
+  </svg>
+
     <p class="phrase">La puissance de la STO, mais ce qui se conduit tous les jours. Trente-cinq pour cent d'appui en plus, vingt pour cent de traînée en moins, signature en Y.</p>
     <p class="chiffres">
       <span><b>640</b> cv</span>
